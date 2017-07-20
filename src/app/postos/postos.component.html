@@ -1,0 +1,26 @@
+<p>
+  postos works!
+</p>
+
+<ul>
+  <li *ngFor="let item of postos | async">
+      <p>
+
+      <input type="text" #updatetext [value]="item.nome" />
+      <input type="text" #updatetext [value]="item.lat" />
+      <input type="text" #updatetext [value]="item.lgt" />
+      <input type="text" #updatetext [value]="item.preco_diesel" />
+      <button (click)="updateItem(item.$key, updatetext.value)">Atuaizar</button>
+      <button (click)="deleteItem(item.$key)">Remover</button>
+    </p>
+  </li>
+</ul>
+
+  <input type="text" [(ngModel)] = "novoPosto.nome" />
+  <input type="text" [(ngModel)] = "novoPosto.endereco" />
+  <input type="text" [(ngModel)] = "novoPosto.preco_diesel" />
+
+  <button (click)="addPosto()">Adicionar</button>
+
+<button (click)="deleteEverything()">Remover Todos</button>
+
