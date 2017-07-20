@@ -1,24 +1,29 @@
-<ul>
-  <li *ngFor="let item of postos | async">
-      <p>
+<div class="col-md-3">
+	<div class="panel panel-default">
+		<div class="panel-heading">
+			Postos Cadastrados
+		</div>
+		<ul class="list-group">
+			<li class="list-group-item">
+				<input placeholder="Nome" class="form-control" type="text" [(ngModel)] = "novoPosto.nome" />
+				<input placeholder="Endereço" class="form-control" type="text" [(ngModel)] = "novoPosto.endereco" />
+				<input placeholder="Preço Diesel" class="form-control" type="text" [(ngModel)] = "novoPosto.preco_diesel" />
 
-      <input type="text" #updatetext [value]="item.nome" />
-      <input type="text" #updatetext [value]="item.lat" />
-      <input type="text" #updatetext [value]="item.lgt" />
-      <input type="text" #updatetext [value]="item.preco_diesel" />
-      <button (click)="updateItem(item.$key, updatetext.value)">Atuaizar</button>
-      <button (click)="deleteItem(item.$key)">Remover</button>
-    </p>
-  </li>
-</ul>
-
-  <input type="text" [(ngModel)] = "novoPosto.nome" />
-  <input type="text" [(ngModel)] = "novoPosto.endereco" />
-  <input type="text" [(ngModel)] = "novoPosto.preco_diesel" />
-
-  <button (click)="addPosto()">Adicionar</button>
-
-<button (click)="deleteEverything()">Remover Todos</button>
+				<button class="btn btn-success" (click)="addPosto()">Adicionar</button>
+				<button class="btn btn-danger" (click)="deleteEverything()">Remover Todos</button>
+			</li>
+			<li class="list-group-item" *ngFor="let item of postos | async">
+				<input class="form-control" type="text" #updatetext [value]="item.nome" />
+				<input class="form-control" type="text" #updatetext [value]="item.endereco" />
+				<input class="form-control" type="text" #updatetext [value]="item.location.lat" />
+				<input class="form-control" type="text" #updatetext [value]="item.location.lng" />
+				<input class="form-control" type="text" #updatetext [value]="item.preco_diesel" />
+				<button class="btn" (click)="updateItem(item.$key, updatetext.value)">Atualizar</button>
+				<button class="btn btn-danger" (click)="deleteItem(item.$key)">Remover</button>
+			</li>
+		</ul>
+	</div>
+</div>
 
 <app-mapa></app-mapa>
 
