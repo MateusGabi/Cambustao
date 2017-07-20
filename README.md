@@ -8,6 +8,48 @@ This project is a generator for creating new projects with the following feature
 * Firebase via AngualarFire2
 * Bootstrap with ngx-bootstrap
 
+## Installation
+
+### Requirement Node 6+ && NPM 3+
+
+This generator is targeted to be used with Node >= 6.9.0 and NPM >= 3.0.0. You can check your version number with the command
+
+```shell
+$ node --version && npm --version
+v6.10.3
+3.10.10
+```
+
+### Requirement Angular CLI
+
+To build and run this project, you will need Angular CLI. This version is compatible with @angular/cli 1.0. If you have
+any previous instantiation of the Angular CLI, you should remove them.
+
+```shell
+$ npm uninstall -g angular-cli # remove any previous angular-cli
+$ npm i -g @angular/cli
+$ ng --version
+    _                      _                 ____ _     ___
+   / \   _ __   __ _ _   _| | __ _ _ __     / ___| |   |_ _|
+  / △ \ | '_ \ / _` | | | | |/ _` | '__|   | |   | |    | |
+ / ___ \| | | | (_| | |_| | | (_| | |      | |___| |___ | |
+/_/   \_\_| |_|\__, |\__,_|_|\__,_|_|       \____|_____|___|
+               |___/
+@angular/cli: 1.1.2
+node: 6.10.3
+os: darwin x64
+@angular/common: 4.2.3
+@angular/compiler: 4.2.3
+@angular/core: 4.2.3
+@angular/forms: 4.2.3
+@angular/http: 4.2.3
+@angular/platform-browser: 4.2.3
+@angular/platform-browser-dynamic: 4.2.3
+@angular/router: 4.2.3
+@angular/cli: 1.1.2
+@angular/compiler-cli: 4.2.3
+```
+
 ## Configuration
 
 You will need to configure your firebase credentials in firebaseConfig.ts. This can be copied 
