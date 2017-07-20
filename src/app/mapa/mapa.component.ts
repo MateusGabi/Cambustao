@@ -17,10 +17,9 @@ export class MapaComponent implements OnInit {
   }
 
 	initMap() {
-		var uluru = {lat: -20.4288513, lng: -54.6588615};
 		var map = new google.maps.Map(document.getElementById('map'), {
-			zoom: 10,
-			center: uluru
+			zoom: 4,
+			center: {lat: -14.4483014, lng: -68.9872348}
 		});
 
 		(this.db.list("/postos", {preserveSnapshot:true})).subscribe(snapshots => {
