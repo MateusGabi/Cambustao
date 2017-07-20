@@ -23,9 +23,9 @@ export class PostosComponent implements OnInit {
 
   addPosto() {
 
-	this.googleMaps.getLocation(this.novoPosto.endereco).subscribe(response => {
+	this.googleMaps.getLocation(this.novoPosto.endereco).subscribe(location => {
 
-		this.novoPosto.location = response.results[0].geometry.location;
+		this.novoPosto.location = location;
 
 		this.postos.push(this.novoPosto);
 
