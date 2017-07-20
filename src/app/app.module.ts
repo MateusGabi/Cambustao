@@ -22,6 +22,7 @@ import {AllInOnePageComponent} from "./pages/all-in-one-page.component";
 import {LoginPageComponent} from "./pages/login-page.component";
 import { DashboardPageComponent } from './pages/dashboard-page.component';
 import { PostosComponent } from './postos/postos.component';
+import { MapaComponent } from './mapa/mapa.component';
 
 const routes: Routes = [
     { path: 'register', component: RegisterPageComponent },
@@ -45,7 +46,8 @@ const routes: Routes = [
         AllInOnePageComponent,
         LoginPageComponent,
         DashboardPageComponent,
-        PostosComponent
+        PostosComponent,
+        MapaComponent
     ],
     imports: [
         BrowserModule,
