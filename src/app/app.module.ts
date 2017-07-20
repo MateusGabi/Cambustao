@@ -1,3 +1,4 @@
+import { GoogleMapsAPIService } from './services/google-maps-api.service';
 import { LoggedInGuard } from './shared/logged-in-guard';
 import {BrowserModule} from "@angular/platform-browser";
 import {NgModule} from "@angular/core";
@@ -57,7 +58,7 @@ const routes: Routes = [
         AngularFireAuthModule,
         RouterModule.forRoot(routes)
     ],
-    providers: [AuthService, LoggedInGuard],
+    providers: [AuthService, LoggedInGuard, GoogleMapsAPIService],
     bootstrap: [AppComponent]
 })
 export class AppModule {

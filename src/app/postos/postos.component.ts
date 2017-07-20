@@ -1,3 +1,4 @@
+import { GoogleMapsAPIService } from './../services/google-maps-api.service';
 import { AngularFireDatabase, FirebaseListObservable } from 'angularfire2/database';
 import { Component, OnInit } from '@angular/core';
 
@@ -16,20 +17,23 @@ export class PostosComponent implements OnInit {
     preco_diesel: 0.0
   };
 
-  constructor(db: AngularFireDatabase) {
-    this.postos = db.list("/postos"); 
+  constructor(db: AngularFireDatabase, private googleMaps: GoogleMapsAPIService) {
+	this.postos = db.list("/postos");
   }
 
   addPosto() {
-    console.log(this.novoPosto);
-    this.postos.push({
-      nome: this.novoPosto.nome,
-      endereco : this.novoPosto.endereco,
-      preco_diesel: this.novoPosto.preco_diesel
-    });
 
-    this.novoPosto = new Object();
+	this.googleMaps.getLocation(this.novoPosto.endereco).subscribe(response => {
+
+		this.novoPosto.location = response.results[0].geometry.location;
+
+		this.postos.push(this.novoPosto);
+
+    	this.novoPosto = new Object();
+	});
+
   }
+
   updateItem(key: string, newText: string) {
     this.postos.update(key, { text: newText });
   }
