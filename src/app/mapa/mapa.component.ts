@@ -10,9 +10,7 @@ export class MapaComponent implements OnInit {
 
 	private markers : FirebaseListObservable<any>;
 
-  constructor(db: AngularFireDatabase) {
-		this.markers = db.list("/postos");
-	}
+  constructor(private db: AngularFireDatabase) { }
 
   ngOnInit() {
 	  this.initMap();
@@ -25,11 +23,18 @@ export class MapaComponent implements OnInit {
 			center: uluru
 		});
 
+		(this.db.list("/postos", {preserveSnapshot:true})).subscribe(snapshots => {
+			snapshots.forEach(posto => {
+				console.log(posto.val());
+				new google.maps.Marker({
+					position: posto.val().location,
+					map: map
+				});
+			});
+		});
+
 		this.markers.forEach(marker => {
-			new google.maps.Marker({
-				position: marker.location,
-				map: map
-			})
+			
 		});
 		
 	}
