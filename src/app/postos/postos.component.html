@@ -1,4 +1,4 @@
-<div class="col-md-3">
+<div id="adicionar-posto" class="col-md-3 affix">
 	<div class="panel panel-default">
 		<div class="panel-heading">
 			Postos Cadastrados
@@ -12,7 +12,7 @@
 				<button class="btn btn-success" (click)="addPosto()">Adicionar</button>
 				<button class="btn btn-danger" (click)="deleteEverything()">Remover Todos</button>
 			</li>
-			<li class="list-group-item" *ngFor="let item of postos | async">
+			<!-- <li class="list-group-item" *ngFor="let item of postos | async">
 				<input class="form-control" type="text" #updatetext [value]="item.nome" />
 				<input class="form-control" type="text" #updatetext [value]="item.endereco" />
 				<input class="form-control" type="text" #updatetext [value]="item.location.lat" />
@@ -20,7 +20,7 @@
 				<input class="form-control" type="text" #updatetext [value]="item.preco_diesel" />
 				<button class="btn" (click)="updateItem(item.$key, updatetext.value)">Atualizar</button>
 				<button class="btn btn-danger" (click)="deleteItem(item.$key)">Remover</button>
-			</li>
+			</li> -->
 		</ul>
 	</div>
 </div>

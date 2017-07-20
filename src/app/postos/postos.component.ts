@@ -18,7 +18,11 @@ export class PostosComponent implements OnInit {
   };
 
   constructor(db: AngularFireDatabase, private googleMaps: GoogleMapsAPIService) {
-	this.postos = db.list("/postos");
+	  this.postos = db.list("/postos");
+  }
+
+  getPostos() {
+    return this.postos;
   }
 
   addPosto() {
