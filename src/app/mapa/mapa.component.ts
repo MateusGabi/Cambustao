@@ -24,16 +24,11 @@ export class MapaComponent implements OnInit {
 
 		(this.db.list("/postos", {preserveSnapshot:true})).subscribe(snapshots => {
 			snapshots.forEach(posto => {
-				console.log(posto.val());
 				new google.maps.Marker({
 					position: posto.val().location,
 					map: map
 				});
 			});
-		});
-
-		this.markers.forEach(marker => {
-			
 		});
 		
 	}
