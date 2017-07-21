@@ -4,7 +4,7 @@
 			Buscar Posto
 		</div>
 		<div class="panel-body">
-			<input placeholder="Digite um nome, cidade, ou rua de um posto" class="form-control" type="text"  />
+			<input placeholder="Digite um nome, cidade, ou rua de um posto" class="form-control" type="text"  (keyup)="caixaBuscaOnKeyUp($event)" />
 		</div>
 	</div>
 

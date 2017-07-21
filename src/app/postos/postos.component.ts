@@ -52,4 +52,10 @@ export class PostosComponent implements OnInit {
   ngOnInit() {
   }
 
+  caixaBuscaOnKeyUp(event: KeyboardEvent) {
+    var value : string = (<HTMLInputElement>event.target).value;
+
+    console.log(value);
+  }
+
 }
