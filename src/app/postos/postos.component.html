@@ -1,27 +1,49 @@
 <div id="adicionar-posto" class="col-md-3 affix">
 	<div class="panel panel-default">
 		<div class="panel-heading">
-			Postos Cadastrados
+			Buscar Posto
 		</div>
-		<ul class="list-group">
-			<li class="list-group-item">
-				<input placeholder="Nome" class="form-control" type="text" [(ngModel)] = "novoPosto.nome" />
-				<input placeholder="Endereço" class="form-control" type="text" [(ngModel)] = "novoPosto.endereco" />
-				<input placeholder="Preço Diesel" class="form-control" type="text" [(ngModel)] = "novoPosto.preco_diesel" />
+		<div class="panel-body">
+			<input placeholder="Digite um nome, cidade, ou rua de um posto" class="form-control" type="text"  />
+		</div>
+	</div>
 
-				<button class="btn btn-success" (click)="addPosto()">Adicionar</button>
-				<button class="btn btn-danger" (click)="deleteEverything()">Remover Todos</button>
-			</li>
-			<!-- <li class="list-group-item" *ngFor="let item of postos | async">
-				<input class="form-control" type="text" #updatetext [value]="item.nome" />
-				<input class="form-control" type="text" #updatetext [value]="item.endereco" />
-				<input class="form-control" type="text" #updatetext [value]="item.location.lat" />
-				<input class="form-control" type="text" #updatetext [value]="item.location.lng" />
-				<input class="form-control" type="text" #updatetext [value]="item.preco_diesel" />
-				<button class="btn" (click)="updateItem(item.$key, updatetext.value)">Atualizar</button>
-				<button class="btn btn-danger" (click)="deleteItem(item.$key)">Remover</button>
-			</li> -->
-		</ul>
+
+	<div class="panel panel-default">
+		<div class="panel-heading">
+			Cadastrador Posto
+		</div>
+		<div class="panel-body">
+			<ul class="list-group">
+				<li class="list-group-item">
+					<div class="form-group">
+						<label>Nome</label>
+						<input placeholder="Nome" class="form-control" type="text" [(ngModel)] = "novoPosto.nome" />
+					</div>
+					<div class="form-group">
+						<label for="">Endereço</label>
+						<input placeholder="Endereço" class="form-control" type="text" [(ngModel)] = "novoPosto.endereco" />
+					</div>
+
+					<div class="form-group">
+						<label for="">Preço do Diesel</label>
+						<input placeholder="Preço Diesel" class="form-control" type="text" [(ngModel)] = "novoPosto.preco_diesel" />
+					</div>
+
+					<button class="btn btn-success btn-block" (click)="addPosto()">Adicionar</button>
+					<!-- <button class="btn btn-danger btn-block" (click)="deleteEverything()">Remover Todos</button> -->
+				</li>
+				<!-- <li class="list-group-item" *ngFor="let item of postos | async">
+					<input class="form-control" type="text" #updatetext [value]="item.nome" />
+					<input class="form-control" type="text" #updatetext [value]="item.endereco" />
+					<input class="form-control" type="text" #updatetext [value]="item.location.lat" />
+					<input class="form-control" type="text" #updatetext [value]="item.location.lng" />
+					<input class="form-control" type="text" #updatetext [value]="item.preco_diesel" />
+					<button class="btn" (click)="updateItem(item.$key, updatetext.value)">Atualizar</button>
+					<button class="btn btn-danger" (click)="deleteItem(item.$key)">Remover</button>
+				</li> -->
+			</ul>
+		</div>
 	</div>
 </div>
 
