@@ -27,6 +27,10 @@ export class MapaComponent implements OnInit {
 				new google.maps.Marker({
 					position: posto.val().location,
 					map: map
+				}).addListener('click', function() {
+					map.setZoom(14);
+					map.setCenter(posto.val().location);
+					alert("Nome:" + posto.val().nome + "\nEndereço:" + posto.val().endereco);
 				});
 			});
 		});

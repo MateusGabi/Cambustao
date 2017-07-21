@@ -11,10 +11,13 @@ export class GoogleMapsAPIService {
   constructor(private http: Http) { }
 
   extractLocation(res: Response) {
+
+    console.log(res.json());
 	  return res.json().results[0].geometry.location;
   }
 
   getLocation(myAddress : string) : Observable<any> {
+
 
 	return this.http.get(this.uriGeocodeAPI + "&address=" + myAddress).map(this.extractLocation);
 
