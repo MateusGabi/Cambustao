@@ -27,6 +27,7 @@ import { CaminhoesComponent } from './caminhoes/caminhoes.component';
 import { MotoristasComponent } from './motoristas/motoristas.component';
 import { ViagensComponent } from './viagens/viagens.component';
 import { ConfiguracoesComponent } from './configuracoes/configuracoes.component';
+import { AcoesRapidasDashboardComponent } from './acoes-rapidas-dashboard/acoes-rapidas-dashboard.component';
 
 const routes: Routes = [
     { path: 'register', component: RegisterPageComponent },
@@ -59,7 +60,8 @@ const routes: Routes = [
         CaminhoesComponent,
         MotoristasComponent,
         ViagensComponent,
-        ConfiguracoesComponent
+        ConfiguracoesComponent,
+        AcoesRapidasDashboardComponent
     ],
     imports: [
         BrowserModule,
