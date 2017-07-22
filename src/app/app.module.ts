@@ -23,6 +23,8 @@ import {LoginPageComponent} from "./pages/login-page.component";
 import { DashboardPageComponent } from './pages/dashboard-page.component';
 import { PostosComponent } from './postos/postos.component';
 import { MapaComponent } from './mapa/mapa.component';
+import { CaminhoesComponent } from './caminhoes/caminhoes.component';
+import { PlacaDirective } from './directives/placa.directive';
 
 const routes: Routes = [
     { path: 'register', component: RegisterPageComponent },
@@ -31,6 +33,7 @@ const routes: Routes = [
     { path: 'login', component: LoginPageComponent },
     { path: 'dashboard', component: DashboardPageComponent, canActivate: [LoggedInGuard] },
     { path: 'postos', component: PostosComponent, canActivate: [LoggedInGuard]},
+    { path: 'caminhoes', component: CaminhoesComponent, canActivate: [LoggedInGuard]},
     { path: '', component: HomePageComponent }
 ];
 
@@ -47,7 +50,9 @@ const routes: Routes = [
         LoginPageComponent,
         DashboardPageComponent,
         PostosComponent,
-        MapaComponent
+        MapaComponent,
+        CaminhoesComponent,
+        PlacaDirective
     ],
     imports: [
         BrowserModule,

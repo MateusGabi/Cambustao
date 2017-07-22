@@ -1,0 +1,71 @@
+<div class="col-md-3 sidebar-action">
+	<div class="panel panel-default">
+		<div class="panel-heading">
+			Buscar Caminhão
+		</div>
+		<div class="panel-body">
+			<input placeholder="Digite um modelo, ou placa, ou número" class="form-control" type="text"  (keyup)="caixaBuscaOnKeyUp($event)" />
+		</div>
+	</div>
+
+
+	<div class="panel panel-default">
+		<div class="panel-heading">
+			Cadastrar Caminhão
+		</div>
+		<div class="panel-body">
+			<div class="form-group">
+				<label for="">Modelo</label>
+				<input placeholder="Ex.: FH-16" class="form-control" type="text" [(ngModel)] = "novoCaminhao.modelo" />
+			</div>
+
+			<div class="form-group">
+				<label for="">Placa</label>
+				<input placeholder="Ex.: ABC-1234" class="form-control" type="text" [(ngModel)] = "novoCaminhao.placa" />
+      </div>
+      
+			<div class="form-group">
+        <label>Tipo</label>
+        <select class="form-control" [(ngModel)] = "novoCaminhao.tipo">
+          <option>3/4</option>
+          <option>Carreta</option>
+          <option>Truck</option>
+          <option>3 eixos</option>
+        </select>
+			</div>
+
+      <button class="btn btn-success btn-block" (click)="addCaminhao()">Adicionar</button>
+    </div>
+	</div>
+
+</div>
+
+<div class="col-md-9 sidebar-action">
+
+  <div class="container-fluid">
+
+    <div class="col-sm-6 col-md-4" *ngFor="let caminhao of caminhoes | async">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        {{ caminhao.placa }}
+      </div>
+      <div class="panel-body">
+        <p>
+          <b>Modelo</b>: {{ caminhao.modelo }}<br />
+          <b>Tipo</b>: {{ caminhao.tipo }}
+        </p>
+      </div>
+      <div class="panel-footer container-fluid">
+        <div class="col-md-6">
+          <button href="#" class="btn btn-default btn-block" role="button">Editar</button>
+        </div>
+        <div class="col-md-6">
+          <button href="#" class="btn btn-danger btn-block" role="button" (click)="deleteCaminhao(caminhao.$key)">Excluir</button>
+        </div>
+      </div>
+    </div>
+    </div>
+
+  </div>
+
+</div>
