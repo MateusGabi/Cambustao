@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,9 +8,31 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AcoesRapidasDashboardComponent implements OnInit {
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit() {
+  }
+
+  onClick(event : EventListener, value : string) {
+    console.log(value);
+
+    switch (value) {
+      case 'caminhoes':
+        this.router.navigate(['/caminhoes']);
+        break;
+      case 'motoristas':
+        this.router.navigate(['/motoristas']);
+        break;
+      case 'postos':
+        this.router.navigate(['/postos']);
+        break;
+      case 'viagens':
+        this.router.navigate(['/viagens']);
+        break;
+    
+      default:
+        break;
+    }
   }
 
 }

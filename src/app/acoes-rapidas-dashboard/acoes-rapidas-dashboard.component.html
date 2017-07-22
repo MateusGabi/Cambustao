@@ -1,3 +1,20 @@
-<p>
-  acoes-rapidas-dashboard works!
-</p>
+<div class="row">
+	<div class="col-md-2">
+		<h4>Ações Rápidas</h4>
+	</div>
+</div>
+
+<div class="row">
+	<div class="col-md-2 box-acao-rapida" (click)="onClick($event, 'caminhoes')">
+		<h4>Caminhões</h4>
+	</div>
+	<div class="col-md-2 box-acao-rapida" (click)="onClick($event, 'motoristas')">
+		<h4>Motoristas</h4>
+	</div>
+	<div class="col-md-2 box-acao-rapida" (click)="onClick($event, 'postos')">
+		<h4>Postos</h4>
+	</div>
+	<div class="col-md-2 box-acao-rapida" (click)="onClick($event, 'viagens')">
+		<h4>Viagens</h4>
+	</div>
+</div>
