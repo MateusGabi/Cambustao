@@ -24,6 +24,8 @@ import { DashboardPageComponent } from './pages/dashboard-page.component';
 import { PostosComponent } from './postos/postos.component';
 import { MapaComponent } from './mapa/mapa.component';
 import { CaminhoesComponent } from './caminhoes/caminhoes.component';
+import { MotoristasComponent } from './motoristas/motoristas.component';
+import { ViagensComponent } from './viagens/viagens.component';
 
 const routes: Routes = [
     { path: 'register', component: RegisterPageComponent },
@@ -33,6 +35,8 @@ const routes: Routes = [
     { path: 'dashboard', component: DashboardPageComponent, canActivate: [LoggedInGuard] },
     { path: 'postos', component: PostosComponent, canActivate: [LoggedInGuard]},
     { path: 'caminhoes', component: CaminhoesComponent, canActivate: [LoggedInGuard]},
+    { path: 'motoristas', component: MotoristasComponent, canActivate: [LoggedInGuard]},
+    { path: 'viagens', component: ViagensComponent, canActivate: [LoggedInGuard]},
     { path: '', component: HomePageComponent }
 ];
 
@@ -50,7 +54,9 @@ const routes: Routes = [
         DashboardPageComponent,
         PostosComponent,
         MapaComponent,
-        CaminhoesComponent
+        CaminhoesComponent,
+        MotoristasComponent,
+        ViagensComponent
     ],
     imports: [
         BrowserModule,

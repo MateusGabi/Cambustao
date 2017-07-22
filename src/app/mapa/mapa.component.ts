@@ -19,7 +19,7 @@ export class MapaComponent implements OnInit {
 	initMap() {
 		var map = new google.maps.Map(document.getElementById('map'), {
 			zoom: 4,
-			center: {lat: -14.4483014, lng: -68.9872348}
+			center: {lat: -16.4483014, lng: -67.9872348}
 		});
 
 		(this.db.list("/postos", {preserveSnapshot:true})).subscribe(snapshots => {
