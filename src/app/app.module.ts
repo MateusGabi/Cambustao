@@ -24,7 +24,6 @@ import { DashboardPageComponent } from './pages/dashboard-page.component';
 import { PostosComponent } from './postos/postos.component';
 import { MapaComponent } from './mapa/mapa.component';
 import { CaminhoesComponent } from './caminhoes/caminhoes.component';
-import { PlacaDirective } from './directives/placa.directive';
 
 const routes: Routes = [
     { path: 'register', component: RegisterPageComponent },
@@ -51,8 +50,7 @@ const routes: Routes = [
         DashboardPageComponent,
         PostosComponent,
         MapaComponent,
-        CaminhoesComponent,
-        PlacaDirective
+        CaminhoesComponent
     ],
     imports: [
         BrowserModule,
