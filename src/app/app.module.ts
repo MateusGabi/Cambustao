@@ -26,6 +26,7 @@ import { MapaComponent } from './mapa/mapa.component';
 import { CaminhoesComponent } from './caminhoes/caminhoes.component';
 import { MotoristasComponent } from './motoristas/motoristas.component';
 import { ViagensComponent } from './viagens/viagens.component';
+import { ConfiguracoesComponent } from './configuracoes/configuracoes.component';
 
 const routes: Routes = [
     { path: 'register', component: RegisterPageComponent },
@@ -37,6 +38,7 @@ const routes: Routes = [
     { path: 'caminhoes', component: CaminhoesComponent, canActivate: [LoggedInGuard]},
     { path: 'motoristas', component: MotoristasComponent, canActivate: [LoggedInGuard]},
     { path: 'viagens', component: ViagensComponent, canActivate: [LoggedInGuard]},
+    { path: 'configuracoes', component: ConfiguracoesComponent, canActivate: [LoggedInGuard]},
     { path: '', component: HomePageComponent }
 ];
 
@@ -56,7 +58,8 @@ const routes: Routes = [
         MapaComponent,
         CaminhoesComponent,
         MotoristasComponent,
-        ViagensComponent
+        ViagensComponent,
+        ConfiguracoesComponent
     ],
     imports: [
         BrowserModule,
