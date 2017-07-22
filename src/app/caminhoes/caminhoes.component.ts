@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { FirebaseListObservable, AngularFireDatabase } from 'angularfire2/database';
 import { Component, OnInit } from '@angular/core';
 
@@ -16,7 +17,7 @@ export class CaminhoesComponent implements OnInit {
     tipo: ''
   };
 
-  constructor(db: AngularFireDatabase) {
+  constructor(db: AngularFireDatabase, private router: Router) {
 	  this.caminhoes = db.list("/caminhoes");
   }
 
@@ -32,5 +33,6 @@ export class CaminhoesComponent implements OnInit {
 
   deleteCaminhao(key: string) {    
     this.caminhoes.remove(key);
+    this.router.navigate(['/caminhoes']);
   }
 }
