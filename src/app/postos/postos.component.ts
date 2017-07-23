@@ -67,7 +67,6 @@ export class PostosComponent implements OnInit {
 				}).addListener('click', function() {
 					map.setZoom(14);
 					map.setCenter(posto.val().location);
-					alert("Nome:" + posto.val().nome + "\nEndereço:" + posto.val().endereco);
 				});
 			});
 		});
