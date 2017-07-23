@@ -1,3 +1,4 @@
+import { Mapa } from './../mapa/mapa';
 import { googleMapsConfig } from './../../environments/googleMapsConfig';
 import { GoogleMapsAPIService } from './../services/google-maps-api.service';
 import { AngularFireDatabase, FirebaseListObservable } from 'angularfire2/database';
@@ -54,25 +55,9 @@ export class PostosComponent implements OnInit {
     this.initMap();
   }
 
-  initMap() {
+  initMap() {   
 
-    // map style
-    // mapa noturno e dia
-    // mapa durante o dia é entre as 6h e as 18h
-    // mapa noturno no outro horário
-    var hora = (new Date()).getHours();
-
-    if(hora > 6 && hora < 18)
-      var style : any = googleMapsConfig.style_day;
-    else
-      var style : any = googleMapsConfig.style_night;
-
-    var mapStyle = new google.maps.StyledMapType(<google.maps.MapTypeStyle[]> style);
-
-		var map = new google.maps.Map(document.getElementById('map'), {
-			zoom: 4,
-			center: {lat: -16.4483014, lng: -68.9872348}
-    });
+    var map = new Mapa();
 
 		(this.db.list("/postos", {preserveSnapshot:true})).subscribe(snapshots => {
 			snapshots.forEach(posto => {
@@ -82,11 +67,16 @@ export class PostosComponent implements OnInit {
           title: posto.val().nome
         });
 
-        console.log(posto.val());
+        // aqui deve começar uma diretiva ou sub-componente de mapa
 
         var contentString = '<h4>'+ (posto.val().nome || 'Sem nome :/') +'</h4>' + 
                             '<h5><b>Endereço:</b> '+ posto.val().endereco +'</h5>' + 
-                            '<h5><b>Preço diesel:</b> R$'+ posto.val().preco_diesel +'</h5>';
+                            '<h5><b>Preço diesel:</b> R$'+ posto.val().preco_diesel +'</h5>'+
+                            "<a class='btn btn-default'>Editar</a> &nbsp;&nbsp;"+
+                            "<a class='btn btn-danger'>Excluir</a>";
+
+
+        // aqui deve finalizar uma diretiva ou sub-componente de mapa
 
         var infowindow = new google.maps.InfoWindow({
           content: contentString
@@ -99,10 +89,6 @@ export class PostosComponent implements OnInit {
 				});
 			});
     });
-    
-    //Associate the styled map with the MapTypeId and set it to display.
-    map.mapTypes.set('styled_map', mapStyle);
-    map.setMapTypeId('styled_map');
 		
 	}
 
@@ -110,6 +96,10 @@ export class PostosComponent implements OnInit {
     var value : string = (<HTMLInputElement>event.target).value;
 
     console.log(value);
+  }
+
+  onclick() {
+    console.log("Clicou em editar");
   }
 
 }
