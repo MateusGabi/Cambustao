@@ -67,9 +67,6 @@ export class PostosComponent implements OnInit {
     else
       var style : any = googleMapsConfig.style_night;
 
-
-
-
     var mapStyle = new google.maps.StyledMapType(<google.maps.MapTypeStyle[]> style);
 
 		var map = new google.maps.Map(document.getElementById('map'), {

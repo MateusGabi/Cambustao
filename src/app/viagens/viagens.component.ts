@@ -10,6 +10,10 @@ export class ViagensComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+
+    // sobre exibição de rotas em mapa:
+    // https://developers.google.com/maps/documentation/javascript/directions?hl=pt-br#DisplayingResults
+
   }
 
 }
