@@ -17,7 +17,7 @@ export class PostosComponent implements OnInit {
     preco_diesel: 0.0
   };
 
-  constructor(db: AngularFireDatabase, private googleMaps: GoogleMapsAPIService) {
+  constructor(private db: AngularFireDatabase, private googleMaps: GoogleMapsAPIService) {
 	  this.postos = db.list("/postos");
   }
 
@@ -50,7 +50,29 @@ export class PostosComponent implements OnInit {
 
 
   ngOnInit() {
+    this.initMap();
   }
+
+  initMap() {
+		var map = new google.maps.Map(document.getElementById('map'), {
+			zoom: 4,
+			center: {lat: -16.4483014, lng: -68.9872348}
+		});
+
+		(this.db.list("/postos", {preserveSnapshot:true})).subscribe(snapshots => {
+			snapshots.forEach(posto => {
+				new google.maps.Marker({
+					position: posto.val().location,
+					map: map
+				}).addListener('click', function() {
+					map.setZoom(14);
+					map.setCenter(posto.val().location);
+					alert("Nome:" + posto.val().nome + "\nEndereço:" + posto.val().endereco);
+				});
+			});
+		});
+		
+	}
 
   caixaBuscaOnKeyUp(event: KeyboardEvent) {
     var value : string = (<HTMLInputElement>event.target).value;
