@@ -1,3 +1,4 @@
+import { googleMapsConfig } from './../../environments/googleMapsConfig';
 import { GoogleMapsAPIService } from './../services/google-maps-api.service';
 import { AngularFireDatabase, FirebaseListObservable } from 'angularfire2/database';
 import { Component, OnInit } from '@angular/core';
@@ -54,6 +55,23 @@ export class PostosComponent implements OnInit {
   }
 
   initMap() {
+
+    // map style
+    // mapa noturno e dia
+    // mapa durante o dia é entre as 6h e as 18h
+    // mapa noturno no outro horário
+    var hora = (new Date()).getHours();
+
+    if(hora > 6 && hora < 18)
+      var style : any = googleMapsConfig.style_day;
+    else
+      var style : any = googleMapsConfig.style_night;
+
+
+
+
+    var mapStyle = new google.maps.StyledMapType(<google.maps.MapTypeStyle[]> style);
+
 		var map = new google.maps.Map(document.getElementById('map'), {
 			zoom: 4,
 			center: {lat: -16.4483014, lng: -68.9872348}
@@ -83,7 +101,11 @@ export class PostosComponent implements OnInit {
           infowindow.open(map, marker);
 				});
 			});
-		});
+    });
+    
+    //Associate the styled map with the MapTypeId and set it to display.
+    map.mapTypes.set('styled_map', mapStyle);
+    map.setMapTypeId('styled_map');
 		
 	}
 
