@@ -22,7 +22,6 @@ import {AllInOnePageComponent} from "./pages/all-in-one-page.component";
 import {LoginPageComponent} from "./pages/login-page.component";
 import { DashboardPageComponent } from './pages/dashboard-page.component';
 import { PostosComponent } from './postos/postos.component';
-import { MapaComponent } from './mapa/mapa.component';
 import { CaminhoesComponent } from './caminhoes/caminhoes.component';
 import { MotoristasComponent } from './motoristas/motoristas.component';
 import { ViagensComponent } from './viagens/viagens.component';
@@ -56,7 +55,6 @@ const routes: Routes = [
         LoginPageComponent,
         DashboardPageComponent,
         PostosComponent,
-        MapaComponent,
         CaminhoesComponent,
         MotoristasComponent,
         ViagensComponent,
