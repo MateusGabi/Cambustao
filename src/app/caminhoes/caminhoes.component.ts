@@ -2,6 +2,8 @@ import { Router } from '@angular/router';
 import { FirebaseListObservable, AngularFireDatabase } from 'angularfire2/database';
 import { Component, OnInit } from '@angular/core';
 
+import { Caminhao } from './caminhao';
+
 @Component({
   selector: 'app-caminhoes',
   templateUrl: './caminhoes.component.html',
@@ -9,7 +11,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CaminhoesComponent implements OnInit {
 
-  caminhoes: FirebaseListObservable<any>;
+  caminhoes: FirebaseListObservable<Caminhao[]>;
 
   novoCaminhao : any = {
     modelo: '',
@@ -31,7 +33,7 @@ export class CaminhoesComponent implements OnInit {
     this.novoCaminhao = new Object();
   }
 
-  deleteCaminhao(key: string) {    
+  deleteCaminhao(key: string) {
     this.caminhoes.remove(key);
     this.router.navigate(['/caminhoes']);
   }
