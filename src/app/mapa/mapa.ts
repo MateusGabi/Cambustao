@@ -1,4 +1,8 @@
 import { googleMapsConfig } from './../../environments/googleMapsConfig';
+
+/**
+ * Mapa genérico
+ */
 export class Mapa extends google.maps.Map {
 
     constructor() {
@@ -12,16 +16,19 @@ export class Mapa extends google.maps.Map {
 
 
     private getStyle() : google.maps.StyledMapType {
+
         // map style
         // mapa noturno e dia
         // mapa durante o dia é entre as 6h e as 18h
         // mapa noturno no outro horário
         var hora = (new Date()).getHours();
 
-        if(hora > 6 && hora < 18)
-        var style : any = googleMapsConfig.style_day;
-        else
-        var style : any = googleMapsConfig.style_night;
+        if(hora > 6 && hora < 18){
+            var style : any = googleMapsConfig.style_day;
+        }
+        else {
+            var style : any = googleMapsConfig.style_night;
+        }
 
         var mapStyle = new google.maps.StyledMapType(<google.maps.MapTypeStyle[]> style);
 
@@ -29,7 +36,7 @@ export class Mapa extends google.maps.Map {
     }
 
     private setStyle() : void {
-        //Associate the styled map with the MapTypeId and set it to display.
+        // Associate the styled map with the MapTypeId and set it to display.
         this.mapTypes.set('styled_map', this.getStyle());
         this.setMapTypeId('styled_map');
     }
