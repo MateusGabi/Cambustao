@@ -27,7 +27,7 @@ export class Mapa extends google.maps.Map {
 
         return mapStyle;
     }
-    
+
     private setStyle() : void {
         //Associate the styled map with the MapTypeId and set it to display.
         this.mapTypes.set('styled_map', this.getStyle());
