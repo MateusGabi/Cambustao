@@ -13,24 +13,19 @@ export class CaminhoesComponent implements OnInit {
 
   caminhoes: FirebaseListObservable<Caminhao[]>;
 
-  novoCaminhao : any = {
-    modelo: '',
-    placa: '',
-    tipo: ''
-  };
+  novoCaminhao : Caminhao;
 
   constructor(db: AngularFireDatabase, private router: Router) {
 	  this.caminhoes = db.list("/caminhoes");
+      this.novoCaminhao = new Caminhao();
   }
 
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
   addCaminhao() {
     this.caminhoes.push(this.novoCaminhao);
-
-    this.novoCaminhao = new Object();
+    this.novoCaminhao = new Caminhao();
   }
 
   deleteCaminhao(key: string) {
