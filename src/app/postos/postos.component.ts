@@ -4,102 +4,108 @@ import { GoogleMapsAPIService } from './../services/google-maps-api.service';
 import { AngularFireDatabase, FirebaseListObservable } from 'angularfire2/database';
 import { Component, OnInit } from '@angular/core';
 
+import { Posto } from './posto';
+
 @Component({
-  selector: 'app-postos',
-  templateUrl: './postos.component.html',
-  styleUrls: ['./postos.component.css']
+    selector: 'app-postos',
+    templateUrl: './postos.component.html',
+    styleUrls: ['./postos.component.css']
 })
 export class PostosComponent implements OnInit {
 
-  postos: FirebaseListObservable<any>;
+    postos: FirebaseListObservable<Posto[]>;
 
-  novoPosto : any = {
-    nome: '',
-    endereco: '',
-    preco_diesel: 0.0
-  };
+    novoPosto: Posto;
 
-  constructor(private db: AngularFireDatabase, private googleMaps: GoogleMapsAPIService) {
-	  this.postos = db.list("/postos");
-  }
+    constructor(private db: AngularFireDatabase, private googleMaps: GoogleMapsAPIService) {
+        this.postos = db.list("/postos");
+        this.novoPosto = new Posto();
+    }
 
-  getPostos() {
-    return this.postos;
-  }
+    getPostos() {
+        return this.postos;
+    }
 
-  addPosto() {
+    addPosto() {
 
-	this.googleMaps.getLocation(this.novoPosto.endereco).subscribe(location => {
+        this.googleMaps.getLocation(this.novoPosto.endereco).subscribe(location => {
 
-		this.novoPosto.location = location;
+            this.novoPosto.location = location;
 
-		this.postos.push(this.novoPosto);
+            this.postos.push(this.novoPosto);
 
-    	this.novoPosto = new Object();
-	});
-
-  }
-
-  updateItem(key: string, newText: string) {
-    this.postos.update(key, { text: newText });
-  }
-  deleteItem(key: string) {    
-    this.postos.remove(key); 
-  }
-  deleteEverything() {
-    this.postos.remove();
-  }
-
-
-  ngOnInit() {
-    this.initMap();
-  }
-
-  initMap() {   
-
-    var map = new Mapa();
-
-		(this.db.list("/postos", {preserveSnapshot:true})).subscribe(snapshots => {
-			snapshots.forEach(posto => {
-				var marker = new google.maps.Marker({
-					position: posto.val().location,
-          map: map,
-          title: posto.val().nome
+            this.novoPosto = new Posto();
         });
 
-        // aqui deve começar uma diretiva ou sub-componente de mapa
+    }
 
-        var contentString = '<h4>'+ (posto.val().nome || 'Sem nome :/') +'</h4>' + 
-                            '<h5><b>Endereço:</b> '+ posto.val().endereco +'</h5>' + 
-                            '<h5><b>Preço diesel:</b> R$'+ posto.val().preco_diesel +'</h5>'+
-                            "<a class='btn btn-default'>Editar</a> &nbsp;&nbsp;"+
-                            "<a class='btn btn-danger'>Excluir</a>";
+    updateItem(key: string, newText: string) {
+        this.postos.update(key, { text: newText });
+    }
+
+    deleteItem(key: string) {
+        this.postos.remove(key);
+    }
+
+    deleteEverything() {
+        this.postos.remove();
+    }
 
 
-        // aqui deve finalizar uma diretiva ou sub-componente de mapa
+    ngOnInit() {
+        this.initMap();
+    }
 
-        var infowindow = new google.maps.InfoWindow({
-          content: contentString
+    initMap() {
+
+        var map = new Mapa();
+
+        (this.db.list("/postos", { preserveSnapshot: true })).subscribe(snapshots => {
+            snapshots.forEach((posto : any) => {
+
+                posto = <Posto> posto.val();
+
+                var marker = new google.maps.Marker({
+                    position: posto.location,
+                    map: map,
+                    title: posto.nome
+                });
+
+                // aqui deve começar uma diretiva ou sub-componente de mapa
+
+                var contentString = '<h4>' + (posto.nome || 'Sem nome :/') + '</h4>' +
+                    '<h5><b>Endereço:</b> ' + posto.endereco + '</h5>' +
+                    '<h5><b>Preço diesel:</b> R$' + posto.preco_diesel + '</h5>' +
+                    "<a class='btn btn-default'>Editar</a> &nbsp;&nbsp;" +
+                    "<a class='btn btn-danger'>Excluir</a>";
+
+
+                // aqui deve finalizar uma diretiva ou sub-componente de mapa
+
+                var infowindow = new google.maps.InfoWindow({
+                    content: contentString
+                });
+
+                marker.addListener('click', function() {
+                    map.setZoom(14);
+                    map.setCenter(posto.location);
+                    infowindow.open(map, marker);
+                });
+
+
+            });
         });
-        
-        marker.addListener('click', function() {
-					map.setZoom(14);
-          map.setCenter(posto.val().location);
-          infowindow.open(map, marker);
-				});
-			});
-    });
-		
-	}
 
-  caixaBuscaOnKeyUp(event: KeyboardEvent) {
-    var value : string = (<HTMLInputElement>event.target).value;
+    }
 
-    console.log(value);
-  }
+    caixaBuscaOnKeyUp(event: KeyboardEvent) {
+        var value: string = (<HTMLInputElement>event.target).value;
 
-  onclick() {
-    console.log("Clicou em editar");
-  }
+        console.log(value);
+    }
+
+    onclick() {
+        console.log("Clicou em editar");
+    }
 
 }
