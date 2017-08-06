@@ -28,6 +28,8 @@ import { ViagensComponent } from './viagens/viagens.component';
 import { ConfiguracoesComponent } from './configuracoes/configuracoes.component';
 import { AcoesRapidasDashboardComponent } from './acoes-rapidas-dashboard/acoes-rapidas-dashboard.component';
 
+import { TypeaheadModule } from 'ngx-bootstrap';
+
 const routes: Routes = [
     { path: 'register', component: RegisterPageComponent },
     { path: 'all-in-one', component: AllInOnePageComponent },
@@ -70,7 +72,8 @@ const routes: Routes = [
         AngularFireModule.initializeApp(firebaseConfig, "Cambustao"),
         AngularFireDatabaseModule,
         AngularFireAuthModule,
-        RouterModule.forRoot(routes)
+        RouterModule.forRoot(routes),
+        TypeaheadModule.forRoot()
     ],
     providers: [AuthService, LoggedInGuard, GoogleMapsAPIService],
     bootstrap: [AppComponent]

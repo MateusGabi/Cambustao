@@ -5,6 +5,9 @@ import { AngularFireDatabase, FirebaseListObservable } from 'angularfire2/databa
 import { Viagem } from './viagem';
 import { Mapa } from './../mapa/mapa';
 import { Posto } from './../postos/posto';
+import { cidades } from './cidades';
+
+import 'rxjs/add/observable/of';
 
 @Component({
   selector: 'app-viagens',
@@ -18,11 +21,25 @@ export class ViagensComponent implements OnInit {
 
     alert : any;
 
+    cidades : string[];
+
   constructor(private db: AngularFireDatabase, private googleMaps: GoogleMapsAPIService) {
       this.novaViagem = new Viagem();
 }
 
   ngOnInit() {
+
+      // carrega cidades
+
+      this.cidades = new Array();
+
+      cidades.estados.forEach(estado => {
+          estado.cidades.forEach(cidade => {
+              this.cidades.push(cidade + ' - '+ estado.sigla);
+          });
+      });
+
+      // inicializa mapa
 
     this.initMap();
     (this.db.list("/postos", { preserveSnapshot: true })).subscribe(snapshots => {
