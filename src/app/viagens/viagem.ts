@@ -4,8 +4,8 @@ import {Posto} from '../postos/posto';
 
 export class Viagem {
 
-    origem : any;
-    destino : any;
+    origem : string;
+    destino : string;
     caminhao : Caminhao;
     motorista : Motorista;
     postos : Posto[];

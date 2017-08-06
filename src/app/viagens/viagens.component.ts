@@ -71,14 +71,19 @@ export class ViagensComponent implements OnInit {
     //     //   console.log(l);
     //   });
 
+    if(this.novaViagem.origem == null || this.novaViagem.destino == null) {
+        alert("Preencha os Campos!");
+        return;
+    }
+
 
     var directionsDisplay = new google.maps.DirectionsRenderer();
     var chicago = new google.maps.LatLng(41.850033, -87.6500523);
     directionsDisplay.setMap(this.map);
 
     var request = {
-        origin: 'Campo Grande, MS',
-        destination: 'Palotina, PR',
+        origin: this.novaViagem.origem,
+        destination: this.novaViagem.destino,
         travelMode : google.maps.TravelMode['DRIVING'],
         optimizeWaypoints : true,
         provideRouteAlternatives: true
