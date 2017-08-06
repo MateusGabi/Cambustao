@@ -16,6 +16,8 @@ export class ViagensComponent implements OnInit {
     novaViagem : Viagem;
     map: Mapa;
 
+    alert : any;
+
   constructor(private db: AngularFireDatabase, private googleMaps: GoogleMapsAPIService) {
       this.novaViagem = new Viagem();
 }
@@ -72,7 +74,13 @@ export class ViagensComponent implements OnInit {
     //   });
 
     if(this.novaViagem.origem == null || this.novaViagem.destino == null) {
-        alert("Preencha os Campos!");
+
+        alert("Preencha os campos de origem e destino.");
+
+        // this.alert = Object.assign({
+        //     type: 'danger',
+        //     msg: 'Preencha os Campos!'
+        // }, alert);
         return;
     }
 
@@ -94,6 +102,10 @@ export class ViagensComponent implements OnInit {
 
         if(status == google.maps.DirectionsStatus.ZERO_RESULTS) {
             alert('Não foi encontrado rotas.');
+            // this.alert = Object.assign({
+            //     type: 'danger',
+            //     msg: 'Preencha os Campos!'
+            // }, alert);
         }
         else if (status == google.maps.DirectionsStatus.OK) {
 

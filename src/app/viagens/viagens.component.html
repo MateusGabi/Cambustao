@@ -18,10 +18,12 @@
 				<input placeholder="Nome" class="form-control" type="text" [(ngModel)] = "novaViagem.destino" />
 			</div>
 
-			<button class="btn btn-success btn-block" (click)="tracarRota()">Adicionar</button>
+			<button class="btn btn-success btn-block" (click)="tracarRota()">Projetar Rota</button>
 		</div>
 	</div>
 
 </div>
+
+<alert [type]="alert.type" dismissible="true">{{ alert.msg }}</alert>
 
 <div id="map"></div>
