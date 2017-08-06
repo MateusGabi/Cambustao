@@ -1,12 +1,12 @@
-<h3>Register</h3>
+<h3>Cadastro</h3>
 <form [formGroup]="form" role="form" (ngSubmit)="onSubmit(form.value)" novalidate>
     <div class="form-group" [class.has-error]="name.invalid && name.touched">
-        <label for="name" class="control-label">Name</label>
+        <label for="name" class="control-label">Nome</label>
         <input [formControl]="name" required type="text" class="form-control" id="name" name="name">
         <div class="help-block">
             <ul class="list-unstyled">
-                <li *ngIf="name.valid || name.pristine">Enter your name</li>
-                <li *ngIf="name.dirty && name.hasError('required')">A name is required</li>
+                <li *ngIf="name.valid || name.pristine">Digite seu nome</li>
+                <li *ngIf="name.dirty && name.hasError('required')">Um nome é obrigatório</li>
             </ul>
         </div>
     </div>
@@ -15,42 +15,38 @@
         <input [formControl]="email" required type="email" class="form-control" id="email" name="email">
         <div class="help-block">
             <ul class="list-unstyled">
-                <li *ngIf="email.valid || email.pristine">Enter your email address</li>
-                <li *ngIf="email.dirty && email.hasError('required')">An email address is required</li>
-                <li *ngIf="email.dirty && email.hasError('email')">Please enter a valid email address</li>
+                <li *ngIf="email.valid || email.pristine">Digite se email</li>
+                <li *ngIf="email.dirty && email.hasError('required')">Um email é obrigatório</li>
+                <li *ngIf="email.dirty && email.hasError('email')">Por favor, digite um email válido</li>
             </ul>
         </div>
     </div>
     <div class="form-group" [class.has-error]="password.invalid && password.touched">
-        <label for="password">Password</label>
+        <label for="password">Senha</label>
         <input [formControl]="password" type="password" required class="form-control" id="password" name="password">
         <div class="help-block">
             <ul class="list-unstyled">
-                <li *ngIf="password.dirty && password.valid || password.pristine">Enter your password</li>
-                <li *ngIf="password.dirty && password.hasError('required')">A password is required</li>
+                <li *ngIf="password.dirty && password.valid || password.pristine">Digite sua senha</li>
+                <li *ngIf="password.dirty && password.hasError('required')">Uma senha é obrigatório</li>
             </ul>
         </div>
     </div>
     <div class="form-group"
          [class.has-error]="(password2.invalid || form.hasError('mismatchedPasswords')) && password2.touched">
-        <label for="password2">Repeat Password</label>
+        <label for="password2">Repita sua senha</label>
         <input [formControl]="password2" type="password" required class="form-control" id="password2"
                name="password2">
         <div class="help-block">
             <ul class="list-unstyled">
-                <li *ngIf="(password2.valid && !form.hasError('mismatchedPasswords')) || password2.pristine">Repeat
-                    your
-                    password
+                <li *ngIf="(password2.valid && !form.hasError('mismatchedPasswords')) || password2.pristine">Repita sua senha
                 </li>
-                <li *ngIf="password2.dirty && password2.hasError('required')">A password is required</li>
-                <li *ngIf="password2.dirty && password2.valid && form.hasError('mismatchedPasswords')">Passwords
-                    don't
-                    match
+                <li *ngIf="password2.dirty && password2.hasError('required')">Uma senha é obrigatória</li>
+                <li *ngIf="password2.dirty && password2.valid && form.hasError('mismatchedPasswords')">as senhas não conferem
                 </li>
             </ul>
         </div>
     </div>
     <button type="submit" class="btn btn btn-primary">
-        Register
+        Cadastrar
     </button>
 </form>

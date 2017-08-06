@@ -8,21 +8,18 @@
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
-                <li routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><a [routerLink]="['']">Home</a></li>
-                <li routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><a [routerLink]="['dashboard']" *ngIf="(isLoggedIn|async)">Dashboard</a></li>
+                <li routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><a [routerLink]="['']">Início</a></li>
                 <li routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><a [routerLink]="['caminhoes']" *ngIf="(isLoggedIn|async)">Caminhões</a></li>
-                <li routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><a [routerLink]="['motoristas']" *ngIf="(isLoggedIn|async)">Motoristas</a></li>
                 <li routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><a [routerLink]="['postos']" *ngIf="(isLoggedIn|async)">Postos</a></li>
                 <li routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><a [routerLink]="['viagens']" *ngIf="(isLoggedIn|async)">Viagens</a></li>
-                <li routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><a
-                        [routerLink]="['all-in-one']" *ngIf="!(isLoggedIn|async)">All In One</a></li>
+
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 <li *ngIf="(isLoggedIn|async)" class="navbar-text">{{(currentUser()|async).email}}</li>
                 <li routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" *ngIf="!(isLoggedIn|async)"><a
-                        [routerLink]="['login']">Login</a></li>
+                        [routerLink]="['login']">Entrar</a></li>
                 <li routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><a [routerLink]="['configuracoes']" *ngIf="(isLoggedIn|async)">Configurações</a></li>
-                <li *ngIf="(isLoggedIn|async)"><a (click)="logout()" href="#">Logout</a></li>
+                <li *ngIf="(isLoggedIn|async)"><a (click)="logout()" href="#">Sair</a></li>
             </ul>
         </div><!-- /.navbar-collapse -->
     </div><!-- /.container-fluid -->
