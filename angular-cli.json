@@ -19,9 +19,13 @@
       "mobile": false,
       "styles": [
         "styles.css",
-        "../node_modules/bootstrap/dist/css/bootstrap.min.css"
+        "../node_modules/bootstrap/dist/css/bootstrap.min.css",
+        "../node_modules/propellerkit/dist/css/propeller.min.css"
       ],
-      "scripts": [],
+      "scripts": [
+          "../node_modules/propellerkit/dist/js/propeller.min.js",
+          "../node_modules/propellerkit/dist/js/bootstrap.min.js"
+      ],
       "environmentSource": "environments/environment.ts",
       "environments": {
         "dev": "environments/environment.ts",
