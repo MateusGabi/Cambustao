@@ -1,3 +1,71 @@
-<p>
-  motorista works!
-</p>
+<div class="col-md-3 sidebar-action">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            Buscar Motorista
+        </div>
+        <div class="panel-body">
+            <input placeholder="Digite o nome do motorista" class="form-control" type="text" (keyup)="caixaBuscaOnKeyUp($event)"
+            />
+        </div>
+    </div>
+
+
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            Cadastrar Motorista
+        </div>
+        <div class="panel-body">
+            <div class="form-group">
+                <label for="">Nome</label>
+                <input placeholder="Ex.: Joao" class="form-control" type="text" [(ngModel)]="novoMotorista.nome" />
+            </div>
+
+            <div class="form-group">
+                <label for="">CPF</label>
+                <input placeholder="Ex.: 123456789-10" class="form-control" type="text" [(ngModel)]="novoMotorista.cpf" />
+            </div>
+
+            <div class="form-group">
+                <label for="">Idade</label>
+                <input placeholder="Ex.: 20 Anos" class="form-control" type="text" [(ngModel)]="novoMotorista.idade" />
+            </div>
+
+            <button class="btn btn-success btn-block" (click)="addMotorista()">Adicionar</button>
+        </div>
+    </div>
+
+</div>
+
+<div class="col-md-9 sidebar-action">
+
+    <div class="container-fluid">
+
+        <div class="col-sm-6 col-md-4" *ngFor="let motorista of motoristas | async">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    {{ motorista.nome }}
+                </div>
+                <div class="panel-body">
+                    <p>
+                        <b>CPF</b>: {{ motorista.cpf }}
+                        <br />
+                        <b>Idade</b>: {{ motorista.idade }}
+                    </p>
+                </div>
+                <div class="panel-footer container-fluid">
+                    <div class="col-md-6">
+                        <button href="#" class="btn btn-default btn-block" role="button" (click)="editar(motorista.$key)">Editar</button>
+                    </div>
+                    <div class="col-md-6">
+                        <button href="#" class="btn btn-danger btn-block" role="button" (click)="deleteMotorista(motorista.$key)">Excluir</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+
+<app-editarmotorista [motoristaChild]="motoristaParaEditar"></app-editarmotorista>

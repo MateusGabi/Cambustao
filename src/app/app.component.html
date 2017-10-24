@@ -10,8 +10,10 @@
             <ul class="nav navbar-nav">
                 <li routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><a [routerLink]="['']">Início</a></li>
                 <li routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><a [routerLink]="['caminhoes']" *ngIf="(isLoggedIn|async)">Caminhões</a></li>
+                <li routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><a [routerLink]="['motorista']" *ngIf="(isLoggedIn|async)">Motoristas</a></li>
                 <li routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><a [routerLink]="['postos']" *ngIf="(isLoggedIn|async)">Postos</a></li>
                 <li routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><a [routerLink]="['viagens']" *ngIf="(isLoggedIn|async)">Viagens</a></li>
+                
 
             </ul>
             <ul class="nav navbar-nav navbar-right">

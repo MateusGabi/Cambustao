@@ -23,7 +23,6 @@ import {LoginPageComponent} from "./pages/login-page.component";
 import { DashboardPageComponent } from './pages/dashboard-page.component';
 import { PostosComponent } from './postos/postos.component';
 import { CaminhoesComponent } from './caminhoes/caminhoes.component';
-import { MotoristasComponent } from './motoristas/motoristas.component';
 import { ViagensComponent } from './viagens/viagens.component';
 import { ConfiguracoesComponent } from './configuracoes/configuracoes.component';
 import { AcoesRapidasDashboardComponent } from './acoes-rapidas-dashboard/acoes-rapidas-dashboard.component';
@@ -31,6 +30,7 @@ import { AcoesRapidasDashboardComponent } from './acoes-rapidas-dashboard/acoes-
 import { TypeaheadModule } from 'ngx-bootstrap';
 import { EditarcaminhaoComponent } from './editarcaminhao/editarcaminhao.component';
 import { MotoristaComponent } from './motorista/motorista.component';
+import { EditarmotoristaComponent } from './editarmotorista/editarmotorista.component';
 
 const routes: Routes = [
     { path: 'register', component: RegisterPageComponent },
@@ -40,7 +40,7 @@ const routes: Routes = [
     { path: 'dashboard', component: DashboardPageComponent, canActivate: [LoggedInGuard] },
     { path: 'postos', component: PostosComponent, canActivate: [LoggedInGuard]},
     { path: 'caminhoes', component: CaminhoesComponent, canActivate: [LoggedInGuard]},
-    { path: 'motoristas', component: MotoristasComponent, canActivate: [LoggedInGuard]},
+    { path: 'motorista', component: MotoristaComponent, canActivate: [LoggedInGuard]},
     { path: 'viagens', component: ViagensComponent, canActivate: [LoggedInGuard]},
     { path: 'configuracoes', component: ConfiguracoesComponent, canActivate: [LoggedInGuard]},
     { path: '', component: HomePageComponent }
@@ -60,12 +60,12 @@ const routes: Routes = [
         DashboardPageComponent,
         PostosComponent,
         CaminhoesComponent,
-        MotoristasComponent,
         ViagensComponent,
         ConfiguracoesComponent,
         AcoesRapidasDashboardComponent,
         EditarcaminhaoComponent,
-        MotoristaComponent
+        MotoristaComponent,
+        EditarmotoristaComponent
     ],
     imports: [
         BrowserModule,
