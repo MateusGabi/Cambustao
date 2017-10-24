@@ -29,6 +29,8 @@ import { ConfiguracoesComponent } from './configuracoes/configuracoes.component'
 import { AcoesRapidasDashboardComponent } from './acoes-rapidas-dashboard/acoes-rapidas-dashboard.component';
 
 import { TypeaheadModule } from 'ngx-bootstrap';
+import { EditarcaminhaoComponent } from './editarcaminhao/editarcaminhao.component';
+import { MotoristaComponent } from './motorista/motorista.component';
 
 const routes: Routes = [
     { path: 'register', component: RegisterPageComponent },
@@ -61,7 +63,9 @@ const routes: Routes = [
         MotoristasComponent,
         ViagensComponent,
         ConfiguracoesComponent,
-        AcoesRapidasDashboardComponent
+        AcoesRapidasDashboardComponent,
+        EditarcaminhaoComponent,
+        MotoristaComponent
     ],
     imports: [
         BrowserModule,
