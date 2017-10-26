@@ -1,5 +1,5 @@
 import {Caminhao} from '../caminhoes/caminhao';
-import {Motorista} from '../motoristas/motorista';
+import {Motorista} from '../motorista/motorista';
 import {Posto} from '../postos/posto';
 
 export class Viagem {

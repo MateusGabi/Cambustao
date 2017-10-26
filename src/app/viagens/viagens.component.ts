@@ -73,6 +73,16 @@ export class ViagensComponent implements OnInit {
                 this.map.setCenter(posto.location);
                 infowindow.open(this.map, marker);
             });
+            marker.addListener('mouseover', function() {
+                infowindow.open(this.map, marker);
+                
+            });
+
+            google.maps.event.addListener(marker, 'mouseout',function() {
+                window.setTimeout(function() {
+                    infowindow.close();
+                  }, 20000);
+            });
 
 
         });
