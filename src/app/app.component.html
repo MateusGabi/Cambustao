@@ -13,6 +13,7 @@
                 <li routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><a [routerLink]="['motorista']" *ngIf="(isLoggedIn|async)">Motoristas</a></li>
                 <li routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><a [routerLink]="['postos']" *ngIf="(isLoggedIn|async)">Postos</a></li>
                 <li routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><a [routerLink]="['viagens']" *ngIf="(isLoggedIn|async)">Viagens</a></li>
+                <li routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><a [routerLink]="['remover-posto', 'abc']" *ngIf="(isLoggedIn|async)">Remover Posto</a></li>
                 
 
             </ul>

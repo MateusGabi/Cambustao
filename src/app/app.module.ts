@@ -31,6 +31,7 @@ import { TypeaheadModule } from 'ngx-bootstrap';
 import { EditarcaminhaoComponent } from './editarcaminhao/editarcaminhao.component';
 import { MotoristaComponent } from './motorista/motorista.component';
 import { EditarmotoristaComponent } from './editarmotorista/editarmotorista.component';
+import { RemoverPostoComponent } from './remover-posto/remover-posto.component';
 
 const routes: Routes = [
     { path: 'register', component: RegisterPageComponent },
@@ -43,7 +44,8 @@ const routes: Routes = [
     { path: 'motorista', component: MotoristaComponent, canActivate: [LoggedInGuard]},
     { path: 'viagens', component: ViagensComponent, canActivate: [LoggedInGuard]},
     { path: 'configuracoes', component: ConfiguracoesComponent, canActivate: [LoggedInGuard]},
-    { path: '', component: HomePageComponent }
+    { path: '', component: HomePageComponent },
+    { path: 'remover-posto/:id', component: RemoverPostoComponent},
 ];
 
 @NgModule({
@@ -65,7 +67,8 @@ const routes: Routes = [
         AcoesRapidasDashboardComponent,
         EditarcaminhaoComponent,
         MotoristaComponent,
-        EditarmotoristaComponent
+        EditarmotoristaComponent,
+        RemoverPostoComponent
     ],
     imports: [
         BrowserModule,

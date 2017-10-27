@@ -45,6 +45,7 @@ export class ViagensComponent implements OnInit {
     (this.db.list("/postos", { preserveSnapshot: true })).subscribe(snapshots => {
         snapshots.forEach((posto : any) => {
 
+            var posto_id = posto.key;
             posto = <Posto> posto.val();
 
             var marker = new google.maps.Marker({
@@ -59,7 +60,7 @@ export class ViagensComponent implements OnInit {
                 '<h5><b>Endereço:</b> ' + posto.endereco + '</h5>' +
                 '<h5><b>Preço diesel:</b> R$' + posto.preco_diesel + '</h5>' +
                 "<a class='btn btn-default'>Editar</a> &nbsp;&nbsp;" +
-                "<a class='btn btn-danger'>Excluir</a>";
+                "<a class='btn btn-danger' href='/remover-posto/"+ posto_id + "'>Excluir</a>";
 
 
             // aqui deve finalizar uma diretiva ou sub-componente de mapa
