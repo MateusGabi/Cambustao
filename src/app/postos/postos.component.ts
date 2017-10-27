@@ -1,3 +1,5 @@
+import { UserInfo } from 'app/shared/user-info';
+import { AuthService } from './../shared/auth.service';
 import { Mapa } from './../mapa/mapa';
 import { googleMapsConfig } from './../../environments/googleMapsConfig';
 import { GoogleMapsAPIService } from './../services/google-maps-api.service';
@@ -18,7 +20,7 @@ export class PostosComponent implements OnInit {
 
     novoPosto: Posto;
 
-    constructor(private db: AngularFireDatabase, private googleMaps: GoogleMapsAPIService) {
+    constructor(private db: AngularFireDatabase, private googleMaps: GoogleMapsAPIService, private authService: AuthService) {
         this.postos = db.list("/postos");
         this.novoPosto = new Posto();
     }
@@ -29,14 +31,19 @@ export class PostosComponent implements OnInit {
 
     addPosto() {
 
-        this.googleMaps.getLocation(this.novoPosto.endereco).subscribe(location => {
-
-            this.novoPosto.location = location;
-
-            this.postos.push(this.novoPosto);
-
-            this.novoPosto = new Posto();
-        });
+        if(this.isAdmin()){
+            this.googleMaps.getLocation(this.novoPosto.endereco).subscribe(location => {
+                
+                            this.novoPosto.location = location;
+                
+                            this.postos.push(this.novoPosto);
+                
+                            this.novoPosto = new Posto();
+            });
+        }
+        else{
+            alert("Você não tem permissão para essa ação")
+        }
 
     }
 
@@ -52,7 +59,14 @@ export class PostosComponent implements OnInit {
         this.postos.remove();
     }
 
-
+    isAdmin(){
+        let email;
+        this.authService.currentUser().subscribe((user: UserInfo) => email = user.email);
+        if(email.indexOf("@dev") >= 0){
+            return true;
+        }
+        return false;
+    }
     ngOnInit() {
         this.initMap();
         (<any>$('.money')).mask('0,00', {reverse: true});

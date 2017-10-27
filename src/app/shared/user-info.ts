@@ -6,4 +6,5 @@ export class UserInfo {
     providerId: string;
     uid: string;
     isAdmin: boolean;
+
 }

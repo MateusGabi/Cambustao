@@ -1,3 +1,5 @@
+import { UserInfo } from 'app/shared/user-info';
+import { AuthService } from 'app/shared/auth.service';
 import { EditarmotoristaComponent } from './../editarmotorista/editarmotorista.component';
 import { Router } from '@angular/router';
 import { FirebaseListObservable, AngularFireDatabase } from 'angularfire2/database';
@@ -19,40 +21,60 @@ export class MotoristaComponent implements OnInit {
     novoMotorista : Motorista;
     motoristaParaEditar: Motorista;
   
-    constructor(private db: AngularFireDatabase, private router: Router) {
+    constructor(private db: AngularFireDatabase, private router: Router, private authService: AuthService) {
       this.motoristas = db.list("/motoristas");
         this.novoMotorista = new Motorista();
     }
-  
+    
+    isAdmin(){
+      let email;
+      this.authService.currentUser().subscribe((user: UserInfo) => email = user.email);
+      if(email.indexOf("@dev") >= 0){
+          return true;
+      }
+      return false;
+    }
   
     ngOnInit() {
       this.motoristaParaEditar = <Motorista> {};
     }
   
     addMotorista() {
-      this.motoristas.push(this.novoMotorista);
-      this.novoMotorista = new Motorista();
+      if(this.isAdmin()){
+        this.motoristas.push(this.novoMotorista);
+        this.novoMotorista = new Motorista();
+      }
+      else{
+        alert("Você não tem permissão para essa ação");
+      }
     }
   
     deleteMotorista(key: string) {
-      this.motoristas.remove(key);
-      this.router.navigate(['/motoristas']);
+      if(this.isAdmin()){
+        this.motoristas.remove(key);
+        this.router.navigate(['/motoristas']);
+      }
+      else{
+        alert("Você não tem permissão para essa ação");
+      }
     }
   
     
   
     editar(key){
-      (this.db.list("/motoristas", { preserveSnapshot: true })).subscribe(snapshots => {
-        snapshots.forEach((motorista : any) => {
-          if(key === motorista.key) {
-            this.motoristaParaEditar = <Motorista> motorista.val();
-            console.log(motorista);
-            this.editMotorista.open(key);
-            console.log('entrou');
-          }
-        })
-      });
-      // this.editCaminhao.open(key);
+      if(this.isAdmin()){
+        (this.db.list("/motoristas", { preserveSnapshot: true })).subscribe(snapshots => {
+          snapshots.forEach((motorista : any) => {
+            if(key === motorista.key) {
+              this.motoristaParaEditar = <Motorista> motorista.val();
+              this.editMotorista.open(key);
+            }
+          })
+        });
+      }
+      else{
+        alert("Você não tem permissão para essa ação");
+      }
     }
     close(){
       this.editMotorista.close();

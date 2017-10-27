@@ -1,17 +1,6 @@
 <div class="col-md-3 sidebar-action">
     <div class="panel panel-default">
         <div class="panel-heading">
-            Buscar Caminhão
-        </div>
-        <div class="panel-body">
-            <input placeholder="Digite um modelo, ou placa, ou número" class="form-control" type="text" (keyup)="caixaBuscaOnKeyUp($event)"
-            />
-        </div>
-    </div>
-
-
-    <div class="panel panel-default">
-        <div class="panel-heading">
             Cadastrar Caminhão
         </div>
         <div class="panel-body">
@@ -34,8 +23,7 @@
                     <option>3 eixos</option>
                 </select>
             </div>
-
-            <button class="btn btn-success btn-block" (click)="addCaminhao()">Adicionar</button>
+            <button class="btn btn-success btn-block" ng-show="(currentUser()|async).isAdmin == true" (click)="addCaminhao()">Adicionar</button>
         </div>
     </div>
 
