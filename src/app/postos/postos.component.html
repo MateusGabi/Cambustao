@@ -1,16 +1,6 @@
 <div class="col-md-3 affix sidebar-action">
 	<div class="panel panel-default">
 		<div class="panel-heading">
-			Buscar Posto
-		</div>
-		<div class="panel-body">
-			<input placeholder="Digite um nome, cidade, ou rua de um posto" class="form-control" type="text"  (keyup)="caixaBuscaOnKeyUp($event)" />
-		</div>
-	</div>
-
-
-	<div class="panel panel-default">
-		<div class="panel-heading">
 			Cadastrar Posto
 		</div>
 		<div class="panel-body">
@@ -25,7 +15,7 @@
 
 			<div class="form-group">
 				<label for="">Preço do Diesel</label>
-				<input placeholder="Preço Diesel" class="form-control" type="text" [(ngModel)] = "novoPosto.preco_diesel" />
+				<input placeholder="Preço Diesel" class="form-control money"  type="text" [(ngModel)] = "novoPosto.preco_diesel" />
 			</div>
 
 			<button class="btn btn-success btn-block" (click)="addPosto()">Adicionar</button>

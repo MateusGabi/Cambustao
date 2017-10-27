@@ -19,14 +19,15 @@ export class RemoverPostoComponent implements OnInit {
       
       this.idPosto = params['id'];
       this.deletePosto();
-      window.location.href = '/viagens';
       //this.router.navigate(['/motoristas']);
       
     });
   
   }
   deletePosto() {
-    this.db.list("/postos").remove(this.idPosto);
+    this.db.list("/postos").remove(this.idPosto).then(
+      () => window.location.href = '/viagens'
+    );
   }
 
 }

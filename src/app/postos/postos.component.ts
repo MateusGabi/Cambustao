@@ -6,6 +6,7 @@ import { Component, OnInit } from '@angular/core';
 
 import { Posto } from './posto';
 
+declare var $;
 @Component({
     selector: 'app-postos',
     templateUrl: './postos.component.html',
@@ -54,6 +55,7 @@ export class PostosComponent implements OnInit {
 
     ngOnInit() {
         this.initMap();
+        (<any>$('.money')).mask('0,00', {reverse: true});
     }
 
     initMap() {
