@@ -1,14 +1,4 @@
 <h3>Entrar</h3>
-<div class="row">
-    <div class="col-xs-12 col-sm-12 col-md-12">
-        <a href="#" class="btn btn-lg btn-info btn-block" (click)="loginVia($event, 'google')">Entrar com o Google</a>
-    </div>
-</div>
-<div class="login-or">
-    <hr class="hr-or">
-    <span class="span-or">ou</span>
-</div>
-
 <form [formGroup]="form" role="form" (ngSubmit)="login(form.value)" novalidate>
     <div class="form-group" [class.has-error]="email.invalid && email.touched">
         <label for="email">Email</label>
