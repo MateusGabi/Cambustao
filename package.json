@@ -15,6 +15,8 @@
   },
   "private": true,
   "dependencies": {
+    "@types/jasmine": "2.5.38",
+    "@types/node": "^6.0.71",
     "@angular/cli": "1.1.2",
     "@angular/common": "4.2.3",
     "@angular/compiler": "4.2.3",
@@ -41,8 +43,6 @@
     "zone.js": "0.8.12"
   },
   "devDependencies": {
-    "@types/jasmine": "2.5.38",
-    "@types/node": "^6.0.71",
     "codelyzer": "2.0.0",
     "jasmine-core": "2.5.2",
     "jasmine-spec-reporter": "3.2.0",
