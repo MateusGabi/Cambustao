@@ -35,7 +35,9 @@ export class PostosComponent implements OnInit {
             this.googleMaps.getLocation(this.novoPosto.endereco).subscribe(location => {
                 
                             this.novoPosto.location = location;
-                
+
+                            this.novoPosto.preco_diesel /= 100
+
                             this.postos.push(this.novoPosto);
                 
                             this.novoPosto = new Posto();
@@ -69,7 +71,7 @@ export class PostosComponent implements OnInit {
     }
     ngOnInit() {
         this.initMap();
-        (<any>$('.money')).mask('0,00', {reverse: true});
+        (<any>$('.money')).mask('0.00', {reverse: true});
     }
 
     initMap() {

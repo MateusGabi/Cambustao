@@ -1,3 +1,43 @@
-<p>
-  editarposto works!
-</p>
+<div class="modal inmodal modal-editarPosto" id="editarPosto"  tabindex="-1" role="dialog" aria-hidden="true" #thisModal>
+  <div class="modal-dialog">
+      <div class="modal-content">
+          <div class="modal-header">
+              <button type="button" class="close" (click)="closeInternal()">
+                  <span aria-hidden="true">&times;</span>
+                  <span class="sr-only">Close</span>
+              </button>
+              <h4 class="modal-title">Editar Posto {{nome}}</h4>
+          </div>
+
+          <div class="modal-body">
+
+              <div class="row">
+                  <div class="col-md-6">
+                      <div class="form-group">
+                          <label>Nome</label>
+                          <input [(ngModel)]="postoChild.nome"  type="text" class="form-control" />
+                      </div>                
+                  </div>
+                  <div class="col-md-6">
+                      <div class="form-group">
+                          <label>Preço Diesel</label>
+                          <input [(ngModel)]="postoChild.preco_diesel" type="text" class="form-control"  />
+                      </div>
+                  </div>
+              </div>
+              <div class="row">
+                  <div class="col-md-6">
+                      <div class="form-group">
+                          <label>Endereço</label>
+                          <input [(ngModel)]="postoChild.endereco" type="text" class="form-control"  />
+                      </div>
+                  </div>
+              </div>
+          </div>
+
+          <div class="modal-footer">
+              <button class="btn gb-btn gb-btn-primary gb-text-uppercase" (click)="finish()">Editar</button>
+          </div>
+      </div>
+  </div>
+</div>
