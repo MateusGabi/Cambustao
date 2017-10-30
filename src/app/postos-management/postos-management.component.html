@@ -1,0 +1,43 @@
+<div class="col-md-3 sidebar-action">
+  <div class="panel panel-default">
+      <div class="panel-heading">
+          Gerenciamento de Postos
+      </div>
+     
+  </div>
+
+</div>
+
+<div class="col-md-9 sidebar-action">
+
+  <div class="container-fluid">
+
+      <div class="col-sm-6 col-md-4" *ngFor="let posto of postos | async">
+          <div class="panel panel-default">
+              <div class="panel-heading">
+                  {{ posto.nome }}
+              </div>
+              <div class="panel-body">
+                  <p>
+                      <b>Preço Diesel</b>: {{ posto.preco_diesel }}
+                      <br />
+                      <b>Endereço</b>: {{ posto.endereco }}
+                  </p>
+              </div>
+              <div class="panel-footer container-fluid">
+                  <div class="col-md-6">
+                      <button href="#" class="btn btn-default btn-block" role="button" (click)="editar(posto.$key)">Editar</button>
+                  </div>
+                  <div class="col-md-6">
+                      <button href="#" class="btn btn-danger btn-block" role="button" (click)="deletePosto(posto.$key)">Excluir</button>
+                  </div>
+              </div>
+          </div>
+      </div>
+
+  </div>
+
+</div>
+
+
+<app-editarmotorista [motoristaChild]="motoristaParaEditar"></app-editarmotorista>

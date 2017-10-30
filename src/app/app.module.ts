@@ -32,6 +32,8 @@ import { EditarcaminhaoComponent } from './editarcaminhao/editarcaminhao.compone
 import { MotoristaComponent } from './motorista/motorista.component';
 import { EditarmotoristaComponent } from './editarmotorista/editarmotorista.component';
 import { RemoverPostoComponent } from './remover-posto/remover-posto.component';
+import { EditarpostoComponent } from './editarposto/editarposto.component';
+import { PostosManagementComponent } from './postos-management/postos-management.component';
 
 const routes: Routes = [
     { path: 'register', component: RegisterPageComponent },
@@ -45,7 +47,8 @@ const routes: Routes = [
     { path: 'viagens', component: ViagensComponent, canActivate: [LoggedInGuard]},
     { path: 'configuracoes', component: ConfiguracoesComponent, canActivate: [LoggedInGuard]},
     { path: '', component: HomePageComponent },
-    { path: 'remover-posto/:id', component: RemoverPostoComponent},
+    { path: 'postoManagement', component: PostosManagementComponent, canActivate: [LoggedInGuard]},
+
 ];
 
 @NgModule({
@@ -68,7 +71,9 @@ const routes: Routes = [
         EditarcaminhaoComponent,
         MotoristaComponent,
         EditarmotoristaComponent,
-        RemoverPostoComponent
+        RemoverPostoComponent,
+        EditarpostoComponent,
+        PostosManagementComponent
     ],
     imports: [
         BrowserModule,
