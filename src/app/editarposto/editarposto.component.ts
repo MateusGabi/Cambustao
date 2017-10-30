@@ -1,3 +1,4 @@
+import { GoogleMapsAPIService } from './../services/google-maps-api.service';
 import { AngularFireDatabase } from 'angularfire2/database';
 import { Posto } from './../postos/posto';
 import { Component, OnInit, EventEmitter, Output, Input, ElementRef } from '@angular/core';
@@ -38,19 +39,32 @@ export class EditarpostoComponent implements OnInit {
   }
 
   constructor(private _rootNode: ElementRef,
-    private db: AngularFireDatabase) { }
+    private db: AngularFireDatabase,
+    private googleMaps: GoogleMapsAPIService) { }
 
   has(selector){
     return $(this._rootNode.nativeElement).find(selector).length;
   }
+
   ngOnInit() {
+    (<any>$('.money')).mask('0.00', {reverse: true});
   }
+
   ngAfterViewInit(){
   }
-  finish(){
-    this.db.list("/postos/").update( this.key, this.postoChild);
-    this.close();
 
+  finish(){
+    this.googleMaps.getLocation(this.postoChild.endereco).subscribe(location => {
+      
+                  this.postoChild.location = location;
+
+                  this.postoChild.preco_diesel /= 100
+
+                  this.db.list("/postos/").update( this.key, this.postoChild);
+
+                  this.close();
+  });
+  
   };
 
 }

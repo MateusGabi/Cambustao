@@ -44,7 +44,6 @@ export class PostosManagementComponent implements OnInit {
     deletePosto(key: string) {
       if(this.isAdmin()){
         this.postos.remove(key);
-        this.router.navigate(['/postos']);
       }
       else{
         alert("Você não tem permissão para essa ação");
