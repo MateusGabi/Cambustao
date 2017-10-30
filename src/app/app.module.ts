@@ -43,7 +43,7 @@ const routes: Routes = [
     { path: 'dashboard', component: DashboardPageComponent, canActivate: [LoggedInGuard] },
     { path: 'postos', component: PostosComponent, canActivate: [LoggedInGuard]},
     { path: 'caminhoes', component: CaminhoesComponent, canActivate: [LoggedInGuard]},
-    { path: 'motorista', component: MotoristaComponent, canActivate: [LoggedInGuard]},
+    { path: 'motoristas', component: MotoristaComponent, canActivate: [LoggedInGuard]},
     { path: 'viagens', component: ViagensComponent, canActivate: [LoggedInGuard]},
     { path: 'configuracoes', component: ConfiguracoesComponent, canActivate: [LoggedInGuard]},
     { path: '', component: HomePageComponent },

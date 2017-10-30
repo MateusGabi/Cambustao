@@ -24,7 +24,7 @@ export class AcoesRapidasDashboardComponent implements OnInit {
         this.router.navigate(['/motoristas']);
         break;
       case 'postos':
-        this.router.navigate(['/postos']);
+        this.router.navigate(['/postoManagement']);
         break;
       case 'viagens':
         this.router.navigate(['/viagens']);
