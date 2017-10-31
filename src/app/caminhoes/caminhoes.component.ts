@@ -8,6 +8,8 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 
 import { Caminhao } from './caminhao';
 
+declare var $;
+
 @Component({
   selector: 'app-caminhoes',
   templateUrl: './caminhoes.component.html',
@@ -38,6 +40,10 @@ export class CaminhoesComponent implements OnInit {
 
   ngOnInit() {
     this.caminhaoParaEditar = <Caminhao> {};
+    (<any>$('.placa')).mask('AAA-YYYY', {'translation': {
+      A: {pattern: /[A-Z]/},
+      Y: {pattern: /[0-9]/}
+    }});
   }
 
   addCaminhao() {

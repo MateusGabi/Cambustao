@@ -93,9 +93,7 @@ export class PostosComponent implements OnInit {
 
                 var contentString = '<h4>' + (posto.nome || 'Sem nome :/') + '</h4>' +
                     '<h5><b>Endereço:</b> ' + posto.endereco + '</h5>' +
-                    '<h5><b>Preço diesel:</b> R$' + posto.preco_diesel + '</h5>' +
-                    "<a class='btn btn-default'>Editar</a> &nbsp;&nbsp;" +
-                    "<a class='btn btn-danger'>Excluir</a>";
+                    '<h5><b>Preço diesel:</b> R$' + posto.preco_diesel + '</h5>';
 
 
                 // aqui deve finalizar uma diretiva ou sub-componente de mapa
@@ -117,7 +115,7 @@ export class PostosComponent implements OnInit {
                 google.maps.event.addListener(marker, 'mouseout',function() {
                     window.setTimeout(function() {
                         infowindow.close();
-                      }, 20000);
+                      }, 1000);
                 });
 
 

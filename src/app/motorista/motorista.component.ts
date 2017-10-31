@@ -7,6 +7,8 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 
 import { Motorista } from './motorista';
 
+declare var $;
+
 @Component({
   selector: 'app-motorista',
   templateUrl: './motorista.component.html',
@@ -37,6 +39,7 @@ export class MotoristaComponent implements OnInit {
   
     ngOnInit() {
       this.motoristaParaEditar = <Motorista> {};
+      (<any>$('.cpf')).mask('000.000.000-00', {reverse: true});
     }
   
     addMotorista() {
