@@ -26,7 +26,7 @@ import { CaminhoesComponent } from './caminhoes/caminhoes.component';
 import { ViagensComponent } from './viagens/viagens.component';
 import { ConfiguracoesComponent } from './configuracoes/configuracoes.component';
 import { AcoesRapidasDashboardComponent } from './acoes-rapidas-dashboard/acoes-rapidas-dashboard.component';
-
+import * as firebase from "firebase";
 import { TypeaheadModule } from 'ngx-bootstrap';
 import { EditarcaminhaoComponent } from './editarcaminhao/editarcaminhao.component';
 import { MotoristaComponent } from './motorista/motorista.component';

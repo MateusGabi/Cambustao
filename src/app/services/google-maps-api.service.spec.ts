@@ -1,11 +1,16 @@
+import { HttpModule } from '@angular/http';
 import { TestBed, inject } from '@angular/core/testing';
 
 import { GoogleMapsAPIService } from './google-maps-api.service';
 
+
 describe('GoogleMapsAPIService', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
-      providers: [GoogleMapsAPIService]
+      providers: [GoogleMapsAPIService],
+      imports: [
+        HttpModule
+      ]
     });
   });
 
