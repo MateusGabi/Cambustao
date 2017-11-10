@@ -1,14 +1,33 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { EditarcaminhaoComponent } from './editarcaminhao.component';
+import { Routes, RouterModule } from '@angular/router';
+import { APP_BASE_HREF } from '@angular/common';
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 
+const routeStub : Routes = [
+  {
+    path: '', component : EditarcaminhaoComponent
+  }
+];
 describe('EditarcaminhaoComponent', () => {
   let component: EditarcaminhaoComponent;
   let fixture: ComponentFixture<EditarcaminhaoComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ EditarcaminhaoComponent ]
+      declarations: [ EditarcaminhaoComponent ],
+      providers: [
+        {
+          provide : APP_BASE_HREF, useValue : '/'
+        }
+      ],
+      imports: [
+        RouterModule.forRoot(routeStub),
+      ],
+      schemas: [
+        CUSTOM_ELEMENTS_SCHEMA
+      ]
     })
     .compileComponents();
   }));
