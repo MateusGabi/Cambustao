@@ -53,4 +53,15 @@ describe('PostosManagementComponent', () => {
   it('should be created', () => {
     expect(component).toBeTruthy();
   });
+  it('should be edited', () => {
+    expect(component.editar("-KxmfJBVYNQtERbpLYOp")).toBeTruthy();
+  });
+  it('should be deleted', () => {
+    expect(component.deletePosto("-KxmfJBVYNQtERbpLYOp")).toBeTruthy();
+  });
+  it('should be closed', () => {
+    expect(component.close()).toBeTruthy();
+  });
+
+
 });

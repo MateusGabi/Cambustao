@@ -10,6 +10,7 @@ import { AngularFireDatabase } from 'angularfire2/database';
 import { APP_BASE_HREF } from '@angular/common';
 import { firebaseConfig } from 'environments/firebaseConfig';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { Motorista } from 'app/motorista/motorista';
 
 const routeStub : Routes = [
   {
@@ -53,4 +54,26 @@ describe('MotoristaComponent', () => {
   it('should be created', () => {
     expect(component).toBeTruthy();
   });
+  it('should add and remove motorista', () => {
+    let motorista = new Motorista;
+    motorista.cpf = "008709839-65";
+    motorista.idade = "20 anos";
+    motorista.nome = "Pedro";
+    component.novoMotorista = motorista;
+    expect(component.addMotorista()).toBeTruthy();
+    expect(component.deleteMotorista("-KxmpHMGegl-dDrjrMQA")).toBeTruthy();
+  });
+  it('should edit motorista', () => {
+    let motorista = new Motorista;
+    motorista.cpf = "008709839-65";
+    motorista.idade = "20 anos";
+    motorista.nome = "Pedro";
+    component.motoristaParaEditar = motorista;
+    expect(component.editar("-KxmpJLg10K4gHOwbgpf")).toBeTruthy();
+  });
+  it('should close', () => {
+    
+    expect(component.close()).toBeTruthy();
+  });
+  
 });

@@ -22,6 +22,8 @@ export class MotoristaComponent implements OnInit {
   
     novoMotorista : Motorista;
     motoristaParaEditar: Motorista;
+
+    admin : Boolean; 
   
     constructor(private db: AngularFireDatabase, private router: Router, private authService: AuthService) {
       this.motoristas = db.list("/motoristas");
@@ -32,20 +34,26 @@ export class MotoristaComponent implements OnInit {
       let email;
       this.authService.currentUser().subscribe((user: UserInfo) => email = user.email);
       if(email.indexOf("@dev") >= 0){
-          return true;
+          this.admin = true;
       }
-      return false;
+      else{
+        this.admin = false;
+      }
+      
     }
   
     ngOnInit() {
+      this.isAdmin();
       this.motoristaParaEditar = <Motorista> {};
       (<any>$('.cpf')).mask('000.000.000-00', {reverse: true});
+      
     }
   
     addMotorista() {
-      if(this.isAdmin()){
+      if(this.admin == true){
         this.motoristas.push(this.novoMotorista);
         this.novoMotorista = new Motorista();
+        return true;
       }
       else{
         alert("Você não tem permissão para essa ação");
@@ -53,9 +61,10 @@ export class MotoristaComponent implements OnInit {
     }
   
     deleteMotorista(key: string) {
-      if(this.isAdmin()){
+      if(this.admin == true){
         this.motoristas.remove(key);
         this.router.navigate(['/motoristas']);
+        return true;
       }
       else{
         alert("Você não tem permissão para essa ação");
@@ -65,7 +74,7 @@ export class MotoristaComponent implements OnInit {
     
   
     editar(key){
-      if(this.isAdmin()){
+      if(this.admin == true){
         (this.db.list("/motoristas", { preserveSnapshot: true })).subscribe(snapshots => {
           snapshots.forEach((motorista : any) => {
             if(key === motorista.key) {

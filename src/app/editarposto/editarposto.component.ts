@@ -28,14 +28,17 @@ export class EditarpostoComponent implements OnInit {
     this.modalEl = $('#editarPosto');
     this.key = key;
     this.modalEl.modal('show');
+    return true;
   }
   close(){
     this.modalEl.modal('hide');
+    return true;
   }
 
   closeInternal(){
     this.onClose.next(null);
     this.close();
+    return true;
   }
 
   constructor(private _rootNode: ElementRef,

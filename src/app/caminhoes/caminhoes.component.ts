@@ -23,6 +23,7 @@ export class CaminhoesComponent implements OnInit {
   usuarios: FirebaseListObservable<UserInfo[]>;
   novoCaminhao : Caminhao;
   caminhaoParaEditar: Caminhao;
+  admin: Boolean;
 
   constructor(private db: AngularFireDatabase, private router: Router, private authSerivce: AuthService ) {
 	  this.caminhoes = db.list("/caminhoes");
@@ -33,9 +34,11 @@ export class CaminhoesComponent implements OnInit {
     let email;
     this.authSerivce.currentUser().subscribe((user: UserInfo) => email = user.email);
     if(email.indexOf("@dev") >= 0){
-        return true;
+        this.admin = true;
     }
-    return false;
+    else{
+      this.admin = false;
+    }
   }
 
   ngOnInit() {
@@ -44,32 +47,35 @@ export class CaminhoesComponent implements OnInit {
       A: {pattern: /[A-Z]/},
       Y: {pattern: /[0-9]/}
     }});
+    this.isAdmin();
   }
 
   addCaminhao() {
-    if(this.isAdmin()){
+    if(this.admin){
       this.caminhoes.push(this.novoCaminhao);
       this.novoCaminhao = new Caminhao();
+      return true;
     }
     else{
       alert("Você não tem permissão para essa ação");
+      return false;
     } 
   }
 
   deleteCaminhao(key: string) {
-    if(this.isAdmin()){
+    if(this.admin){
       this.caminhoes.remove(key);
       this.router.navigate(['/caminhoes']);
+      return true;
     }
     else{
       alert("Você não tem permissão para essa ação");
+      return false;
     }
   }
 
-  
-
   editar(key){
-    if(this.isAdmin()){
+    if(this.admin){
       (this.db.list("/caminhoes", { preserveSnapshot: true })).subscribe(snapshots => {
         snapshots.forEach((caminhao : any) => {
           if(key === caminhao.key) {
@@ -78,11 +84,14 @@ export class CaminhoesComponent implements OnInit {
           }
         })
       });
+      return true;
     }
     else{
       alert("Você não tem permissão para essa ação");
+      return false;
     }
   }
+  
   close(){
     this.editCaminhao.close();
   }

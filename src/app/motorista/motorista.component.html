@@ -1,5 +1,5 @@
 <div class="col-md-3 sidebar-action">
-    <div class="panel panel-default">
+    <div *ngIf="admin" class="panel panel-default">
         <div class="panel-heading">
             Cadastrar Motorista
         </div>
@@ -43,10 +43,10 @@
                 </div>
                 <div class="panel-footer container-fluid">
                     <div class="col-md-6">
-                        <button href="#" class="btn btn-default btn-block" role="button" (click)="editar(motorista.$key)">Editar</button>
+                        <button *ngIf="admin" href="#" class="btn btn-default btn-block" role="button" (click)="editar(motorista.$key)">Editar</button>
                     </div>
                     <div class="col-md-6">
-                        <button href="#" class="btn btn-danger btn-block" role="button" (click)="deleteMotorista(motorista.$key)">Excluir</button>
+                        <button *ngIf="admin" href="#" class="btn btn-danger btn-block" role="button" (click)="deleteMotorista(motorista.$key)">Excluir</button>
                     </div>
                 </div>
             </div>

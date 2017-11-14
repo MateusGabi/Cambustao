@@ -34,6 +34,7 @@ export class LoginUserComponent {
                     (err) => this.onError.emit(err)
                 );
         }
+        return false;
     }
 
     loginVia($event, provider: string) {

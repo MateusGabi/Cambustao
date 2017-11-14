@@ -20,6 +20,8 @@ export class PostosComponent implements OnInit {
 
     novoPosto: Posto;
 
+    admin: Boolean;
+
     constructor(private db: AngularFireDatabase, private googleMaps: GoogleMapsAPIService, private authService: AuthService) {
         this.postos = db.list("/postos");
         this.novoPosto = new Posto();
@@ -31,7 +33,7 @@ export class PostosComponent implements OnInit {
 
     addPosto() {
 
-        if(this.isAdmin()){
+        if(this.admin == true){
             this.googleMaps.getLocation(this.novoPosto.endereco).subscribe(location => {
                 
                             this.novoPosto.location = location;
@@ -57,21 +59,21 @@ export class PostosComponent implements OnInit {
         this.postos.remove(key);
     }
 
-    deleteEverything() {
-        this.postos.remove();
-    }
-
     isAdmin(){
         let email;
         this.authService.currentUser().subscribe((user: UserInfo) => email = user.email);
         if(email.indexOf("@dev") >= 0){
-            return true;
+            this.admin = true;
         }
-        return false;
+        else{
+            this.admin = false;
+        }
+        
     }
     ngOnInit() {
         this.initMap();
         (<any>$('.money')).mask('0.00', {reverse: true});
+        this.isAdmin();
     }
 
     initMap() {
@@ -126,12 +128,8 @@ export class PostosComponent implements OnInit {
 
     caixaBuscaOnKeyUp(event: KeyboardEvent) {
         var value: string = (<HTMLInputElement>event.target).value;
-
-        console.log(value);
     }
 
-    onclick() {
-        console.log("Clicou em editar");
-    }
+
 
 }

@@ -59,4 +59,8 @@ describe('ViagensComponent', () => {
   it('should be created', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should trace a route', () => {
+    expect(component.tracarRota()).toBeTruthy();
+  });
 });

@@ -67,4 +67,17 @@ describe('EditarpostoComponent', () => {
   it('should be created', () => {
     expect(component).toBeTruthy();
   });
+  it('should be opened', () => {
+    expect(component.open("-KxmheD1KuCOoSaLMLP3")).toBeTruthy();
+  });
+  it('should be finished', () => {
+    expect(component.finish()).toBeTruthy();
+  });
+
+  it('should be closed', () => {
+    expect(component.close()).toBeTruthy();
+  });
+  it('should be closed with another method', () => {
+    expect(component.closeInternal()).toBeTruthy();
+  });
 });

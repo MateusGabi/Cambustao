@@ -62,4 +62,14 @@ describe('EditarcaminhaoComponent', () => {
   it('should be created', () => {
     expect(component).toBeTruthy();
   });
+  it('should opened', () => {
+    expect(component.open("KxmoGHNytNoYG4SZBGG")).toBeTruthy();
+  });
+  it('should closed', () => {
+    expect(component.close()).toBeTruthy();
+  });
+  it('should closed with another method', () => {
+    expect(component.closeInternal()).toBeTruthy();
+  });
+
 });

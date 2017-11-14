@@ -2,10 +2,8 @@
   <div class="panel panel-default">
       <div class="panel-heading">
           Gerenciamento de Postos
-      </div>
-     
+      </div>    
   </div>
-
 </div>
 
 <div class="col-md-9 sidebar-action">
@@ -26,10 +24,10 @@
               </div>
               <div class="panel-footer container-fluid">
                   <div class="col-md-6">    
-                      <button href="#" class="btn btn-default btn-block" role="button" (click)="editar(posto.$key)">Editar</button>
+                      <button *ngIf ="admin" href="#" class="btn btn-default btn-block" role="button" (click)="editar(posto.$key)">Editar</button>
                   </div>
                   <div class="col-md-6">
-                      <button href="#" class="btn btn-danger btn-block" role="button" (click)="deletePosto(posto.$key)">Excluir</button>
+                      <button *ngIf ="admin" href="#" class="btn btn-danger btn-block" role="button" (click)="deletePosto(posto.$key)">Excluir</button>
                   </div>
               </div>
           </div>

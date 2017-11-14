@@ -1,3 +1,4 @@
+import { Component } from '@angular/core';
 import { APP_BASE_HREF } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { AppComponent } from './app.component';
@@ -16,6 +17,7 @@ const routeStub : Routes = [
     }
   ];
 describe('AppComponent', () => {
+    let component : AppComponent;
     beforeEach(() => {
         let authServiceStub = new AuthServiceStub(true);
 
@@ -47,4 +49,27 @@ describe('AppComponent', () => {
         let compiled = fixture.debugElement.nativeElement;
         expect(compiled.querySelector('.navbar-brand').textContent).toContain('Cambustao');
     }));
+
+    it('should return current user', async(() => {
+        expect(component.currentUser()).toBeNull();
+    }));
+    it('should logout ', async(() => {
+        expect(component.logout()).toBeNull();
+    }));
+    it('should return a succes ', async(() => {
+        expect(component.onResetPasswordSuccess()).toBeNull();
+    }));
+    it('should login succes', async(() => {
+        expect(component.onLoginSuccess()).toBeNull();
+    }));
+    it('should return register succes ', async(() => {
+        expect(component.onRegisterSuccess()).toBeNull();
+    }));
+    it('should loggedOut ', async(() => {
+        expect(component.onLoggedOut()).toBeNull();
+    }));
+    it('should close and alert ', async(() => {
+        expect(component.alertClosed()).toBeNull();
+    }));
+    
 });

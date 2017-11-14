@@ -61,4 +61,14 @@ describe('EditarmotoristaComponent', () => {
   it('should be created', () => {
     expect(component).toBeTruthy();
   });
+  it('should be opened', () => {
+    expect(component.open("KxmpFQRtWsK83tNwa2B")).toBeTruthy();
+  });
+  it('should be closed', () => {
+    expect(component.close()).toBeTruthy();
+  });
+  it('should be closed with another method', () => {
+    expect(component.closeInternal()).toBeTruthy();
+  });
+  
 });

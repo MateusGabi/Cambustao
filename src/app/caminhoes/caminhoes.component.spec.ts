@@ -1,3 +1,4 @@
+import { Caminhao } from './caminhao';
 import { AuthService } from 'app/shared/auth.service';
 import { AngularFireDatabase } from 'angularfire2/database';
 import { FormsModule } from '@angular/forms';
@@ -53,4 +54,22 @@ describe('CaminhoesComponent', () => {
   it('should be created', () => {
     expect(component).toBeTruthy();
   });
+  it('should add and remove caminhao', () => {
+    let caminhao = new Caminhao;
+    caminhao.modelo = "FH-16";
+    caminhao.placa = "ABC-1234";
+    caminhao.tipo = "3 Eixos";
+    component.novoCaminhao = caminhao;
+    expect(component.addCaminhao()).toBeTruthy();
+    expect(component.deleteCaminhao("KximNdb6TC7R4xtVHcP")).toBeTruthy();
+  });
+  it('should edit caminhao', () => {
+    let caminhao = new Caminhao;
+    caminhao.modelo = "FH-16";
+    caminhao.placa = "ABC-1234";
+    caminhao.tipo = "3 Eixos";
+    component.novoCaminhao = caminhao;
+    expect(component.editar("KximNdb6TC7R4xtVHcP")).toBeTruthy();
+  });
+  
 });

@@ -22,6 +22,8 @@ export class PostosManagementComponent implements OnInit {
   
     novoPosto : Posto;
     postoParaEditar: Posto;
+
+    admin: Boolean;
   
     constructor(private db: AngularFireDatabase, private router: Router, private authService: AuthService) {
       this.postos = db.list("/postos");
@@ -32,18 +34,22 @@ export class PostosManagementComponent implements OnInit {
       let email;
       this.authService.currentUser().subscribe((user: UserInfo) => email = user.email);
       if(email.indexOf("@dev") >= 0){
-          return true;
+          this.admin = true;
       }
-      return false;
+      else{
+         this.admin = false;
+      }
     }
   
     ngOnInit() {
       this.postoParaEditar = <Posto> {};
+      this.isAdmin();
     }
   
     deletePosto(key: string) {
-      if(this.isAdmin()){
+      if(this.admin == true){
         this.postos.remove(key);
+        return true;
       }
       else{
         alert("Você não tem permissão para essa ação");
@@ -51,7 +57,7 @@ export class PostosManagementComponent implements OnInit {
     }
    
     editar(key){
-      if(this.isAdmin()){
+      if(this.admin == true){
         (this.db.list("/postos", { preserveSnapshot: true })).subscribe(snapshots => {
           snapshots.forEach((posto : any) => {
             if(key === posto.key) {
@@ -60,11 +66,13 @@ export class PostosManagementComponent implements OnInit {
             }
           })
         });
+        return true;
       }
       else{
         alert("Você não tem permissão para essa ação");
       }
     }
+
     close(){
       this.editPosto.close();
     }

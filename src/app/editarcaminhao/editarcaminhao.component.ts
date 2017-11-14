@@ -27,14 +27,17 @@ export class EditarcaminhaoComponent implements OnInit, AfterViewInit {
     this.modalEl = $('#editarCaminhao');
     this.key = key;
     this.modalEl.modal('show');
+    return true;
   }
   close(){
     this.modalEl.modal('hide');
+    return true;
   }
 
   closeInternal(){
     this.onClose.next(null);
     this.close();
+    return true;
   }
 
   constructor(private _rootNode: ElementRef,

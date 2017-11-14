@@ -36,4 +36,7 @@ describe('LoginUserComponent', () => {
     it('should create', () => {
         expect(component).toBeTruthy();
     });
+    it('should not login', () => {
+        expect(component.login()).toBeFalsy();
+    });
 });
