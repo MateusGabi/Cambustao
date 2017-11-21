@@ -1,8 +1,8 @@
 #homePage{
     background-repeat: no-repeat;
-    background-color: #000000;
+    background-color:#f2f2f2;
     background-position: center;
-    height : calc(100vh - 64px);
+    height : calc(100vh - 52px);
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -10,5 +10,10 @@
 }
 
 #homePage h1{
-    color: white;
+    color: #555;
+}
+
+#homePage #gif{
+    /* height : calc(100vh - 64px); */
+    width: 100%;
 }
