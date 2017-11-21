@@ -41,4 +41,12 @@ describe('AcoesRapidasDashboardComponent', () => {
   it('should be created', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should test switch onCLick', () => {
+    expect(component.onClick(null,'caminhoes')).toBeNull();
+    expect(component.onClick(null,'motoristas')).toBeNull();
+    expect(component.onClick(null,'postoManagement')).toBeNull();
+    expect(component.onClick(null,'viagens')).toBeNull();
+  });
+  
 });
