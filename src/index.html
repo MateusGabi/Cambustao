@@ -9,7 +9,23 @@
   <link rel="icon" type="image/x-icon" href="favicon.ico">
 </head>
 <body>
-  <app-root>Obtendo dados.. Por favor Aguarde</app-root>
+  <style>
+
+    #loading {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+    
+  </style>
+  
+    <app-root>
+        <div id="loading">
+            <img width="200px" src="https://cdn.dribbble.com/users/421466/screenshots/2390664/orbit-400px.gif" />
+        </div>
+      </app-root>
+
 
   <script src="//maps.googleapis.com/maps/api/js?key=AIzaSyAUi4Ds86lTQB_BRirnhTQyAQGb0QXNbTA" charset="utf-8"></script>
 </body>
